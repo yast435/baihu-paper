@@ -32,18 +32,7 @@ The largest embodiment subset is **genie1**, which contains 4253.51 hours of dat
 
 Because the dataset distribution is imbalanced, benchmark evaluation should report not only aggregate performance but also per-embodiment performance. In particular, evaluating models separately on high-resource and low-resource embodiments can reveal whether a policy benefits from the full multi-embodiment dataset or primarily learns from the dominant embodiment subsets.
 
-### Current embodiment statistics
-
-| Embodiment tag | Hours | Hours percent | Notes |
-|---|---:|---:|---|
-| genie1 | 4253.51 | 44.67% | Platform description needed |
-| gr2 | 959.40 | 10.08% | Platform description needed |
-| xinghaitu_r1 | 896.88 | 9.42% | Platform description needed |
-| qinlongros1 | 747.41 | 7.85% | Platform description needed |
-| zhiyuana2 | 646.74 | 6.79% | Platform description needed |
-| [remaining tags] | [TBD] | [TBD] | Complete table needed |
-
-The final paper should include the complete 14-row embodiment distribution table with tasks, episodes, frames, hours, and percentage.
+The complete embodiment-level statistics table is maintained in [`../tables/embodiment_distribution.md`](../tables/embodiment_distribution.md). The final paper should include this table directly or convert it to the target publication format. Platform descriptions for each embodiment tag still need to be added.
 
 ## 3.5 Data format
 
