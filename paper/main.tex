@@ -34,17 +34,7 @@ Vision-language-action models and embodied foundation models require large-scale
 
 To address this need, we present \textbf{Baihu v2.0}, a large-scale, multi-embodiment robot manipulation dataset for embodied foundation model pretraining and evaluation. Baihu v2.0 contains \textbf{9521.75 hours} of robot data, \textbf{2989 tasks}, \textbf{513575 episodes}, and \textbf{1028349814 frames}. Compared with small task-specific datasets, Baihu is designed to support large-scale multi-task policy learning. Compared with unstructured data collections, Baihu emphasizes version management, format standardization, and model-oriented data organization. The dataset is converted from HDF5 source records into the LeRobot v2.1 format~\cite{cadene2026lerobot}, making it compatible with modern robot learning pipelines and scalable training workflows.
 
-The goal of Baihu is not only to accumulate robot data, but also to establish a reusable data foundation for embodied intelligence. A large-scale robot dataset should answer three questions: what skills are represented, how the data is standardized, and how the data can be used to train and evaluate models. Therefore, this paper describes the Baihu dataset from three perspectives: dataset construction, data standardization, and benchmark evaluation. Figure~\ref{fig:pipeline} provides an overview of the Baihu v2.0 construction and evaluation pipeline. We first introduce the data sources and version definition of Baihu v2.0. We then describe the data processing pipeline, including trajectory validation, task organization, action/state schema alignment, and HDF5-to-LeRobot v2.1 format conversion. Finally, we evaluate a GR00T N1.6 checkpoint trained on Baihu v2.0 through offline open-loop zero-shot evaluation across 13 platforms and 42 paired task-dataset records. Compared with the no-training checkpoint, Baihu training reduces Joint MSE by \textbf{99.42\%} and ALL MSE by \textbf{96.79\%}.
-
-\begin{figure}[t]
-  \centering
-  \fbox{\parbox{0.92\linewidth}{\centering
-  \vspace{0.75em}
-  Multi-source robot demonstrations $\rightarrow$ HDF5 trajectory records $\rightarrow$ quality control and schema alignment $\rightarrow$ LeRobot v2.1 conversion $\rightarrow$ Baihu v2.0 $\rightarrow$ GR00T N1.6 pretraining $\rightarrow$ offline zero-shot open-loop evaluation.
-  \vspace{0.75em}}}
-  \caption{Overview of the Baihu v2.0 construction and evaluation pipeline. Multi-source robot demonstrations are stored as HDF5 trajectory records, pass through quality control and schema alignment, are converted into LeRobot v2.1 format, and are then used for GR00T N1.6 pretraining and offline zero-shot open-loop evaluation.}
-  \label{fig:pipeline}
-\end{figure}
+The goal of Baihu is not only to accumulate robot data, but also to establish a reusable data foundation for embodied intelligence. A large-scale robot dataset should answer three questions: what skills are represented, how the data is standardized, and how the data can be used to train and evaluate models. Therefore, this paper describes the Baihu dataset from three perspectives: dataset construction, data standardization, and benchmark evaluation. We first introduce the data sources and version definition of Baihu v2.0. We then describe the data processing pipeline, including trajectory validation, task organization, action/state schema alignment, and HDF5-to-LeRobot v2.1 format conversion. Finally, we evaluate a GR00T N1.6 checkpoint trained on Baihu v2.0 through offline open-loop zero-shot evaluation across 13 platforms and 42 paired task-dataset records. Compared with the no-training checkpoint, Baihu training reduces Joint MSE by \textbf{99.42\%} and ALL MSE by \textbf{96.79\%}.
 
 The main contributions of this work are as follows:
 \begin{enumerate}
@@ -216,7 +206,7 @@ A typical Baihu trajectory can be represented as a task instruction or task labe
 
 \section{Data Processing Pipeline}
 
-Baihu v2.0 converts heterogeneous robot operation records into a consistent dataset for large-scale policy training. The source trajectories are stored in HDF5 format and are standardized into LeRobot v2.1 for downstream imitation-learning and vision-language-action training. The processing pipeline emphasizes three requirements: preserving embodiment-specific control information, filtering invalid trajectories, and producing a unified representation that can be loaded by modern robot learning systems. The overall construction and evaluation workflow is summarized in Figure~\ref{fig:pipeline}.
+Baihu v2.0 converts heterogeneous robot operation records into a consistent dataset for large-scale policy training. The source trajectories are stored in HDF5 format and are standardized into LeRobot v2.1 for downstream imitation-learning and vision-language-action training. The processing pipeline emphasizes three requirements: preserving embodiment-specific control information, filtering invalid trajectories, and producing a unified representation that can be loaded by modern robot learning systems.
 
 \subsection{HDF5 ingestion and trajectory validation}
 
