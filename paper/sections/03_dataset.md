@@ -34,7 +34,25 @@ Because the dataset distribution is imbalanced, benchmark evaluation should repo
 
 The complete embodiment-level statistics table is maintained in [`../tables/embodiment_distribution.md`](../tables/embodiment_distribution.md). The final paper should include this table directly or convert it to the target publication format. Platform descriptions for each embodiment tag still need to be added.
 
-## 3.5 Data format
+## 3.5 Scenario and task coverage
+
+Beyond scale and embodiment diversity, Baihu v2.0 is designed to cover a broad range of manipulation scenarios and task structures. The dataset is intended to support robot learning in both daily-life and production-oriented environments. Representative scenario families include industrial manufacturing, household service, catering or food handling, retail or pharmacy-like environments, and other generalization scenarios. These scenario categories provide a practical organization for analyzing how robot policies transfer across environments and object distributions.
+
+At the task level, Baihu v2.0 contains 2989 tasks. These tasks include both short-horizon primitive behaviors and longer-horizon task chains. Many tasks can be viewed as compositions of lower-level manipulation skills, such as grasping, placing, pushing, pulling, handing over, inserting, pressing, opening, closing, sorting, and arranging. This composition makes the dataset useful not only for direct action prediction, but also for studying how low-level manipulation skills combine into longer task sequences.
+
+## 3.6 Object and interaction diversity
+
+Baihu v2.0 contains robot interactions with diverse real-world objects. The objects span household items, kitchen utensils, retail goods, packages, industrial parts, tools, flexible materials, and irregularly shaped objects. These objects differ in size, shape, material, rigidity, surface texture, and manipulation affordance. Such object diversity is important for learning policies that do not overfit to a small set of familiar objects.
+
+The dataset also includes different interaction patterns between robots and objects. Some trajectories involve single-object pick-and-place behaviors, while others involve object sorting, tool use, assembly-like manipulation, container interaction, drawer or door operation, and multi-object organization. This diversity supports the study of generalization across objects, tasks, and physical interaction types.
+
+## 3.7 Temporal horizon and skill composition
+
+Robot manipulation tasks in Baihu v2.0 span multiple temporal horizons. Short-horizon trajectories typically correspond to local operations such as grasping, pressing, scanning, or simple placement. Medium-horizon trajectories may include object transfer, opening and closing, sorting, or simple multi-step rearrangement. Long-horizon trajectories involve more extended task chains, such as cleaning, assembly, loading or unloading, and multi-stage object organization.
+
+This temporal diversity is important for embodied foundation model training. Short trajectories provide dense examples of low-level visuomotor control, while longer trajectories expose models to task phases, intermediate goals, action rhythm, and sequential dependencies. As a result, Baihu can support both low-level action prediction and higher-level behavior modeling.
+
+## 3.8 Data format
 
 Baihu v2.0 is organized in the LeRobot format. Each episode is represented as a trajectory consisting of temporally ordered observation-action pairs. Depending on the original robot platform and task setup, each trajectory may include visual observations, robot state information, action commands, task labels, and metadata. The standardized format is intended to support direct loading by robot learning pipelines and large-scale model training systems.
 
