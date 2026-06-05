@@ -1,16 +1,16 @@
 # 4. Data Processing Pipeline
 
-Baihu v2.0 is constructed through a multi-stage data processing pipeline that converts heterogeneous robot operation records into a consistent, model-trainable dataset. The pipeline is designed around two goals: preserving embodiment-specific control information and producing a standardized dataset representation that can be used by large-scale imitation-learning and vision-language-action training pipelines. Because Baihu v2.0 integrates data from multiple robot platforms, the processing pipeline must handle differences in sensor configurations, robot states, action spaces, gripper or hand structures, task metadata, and source-specific recording formats.
+Baihu v2.0 is constructed through a multi-stage data processing pipeline that converts heterogeneous robot operation records into a consistent, model-trainable dataset. The source records are stored in HDF5 format and are converted into the LeRobot v2.1 format for downstream training and evaluation. The pipeline is designed around two goals: preserving embodiment-specific control information and producing a standardized dataset representation that can be used by large-scale imitation-learning and vision-language-action training pipelines.
 
-The pipeline consists of seven major stages: raw data ingestion, quality monitoring, trajectory validation, metadata standardization, state/action schema alignment, LeRobot v2.1 conversion, and versioned dataset release. This section describes the current Baihu v2.0 processing procedure. Details that still require final confirmation are summarized at the end of the section rather than left as placeholders in the main text.
+Because Baihu v2.0 integrates data from multiple robot platforms, the processing pipeline must handle differences in sensor configurations, robot states, action spaces, gripper or hand structures, task metadata, and source-specific recording formats. The pipeline consists of seven major stages: HDF5 ingestion, quality monitoring, trajectory validation, metadata standardization, state/action schema alignment, LeRobot v2.1 conversion, and versioned dataset release.
 
-## 4.1 Multi-source raw data ingestion
+## 4.1 HDF5 raw data ingestion
 
-Raw data is integrated from multiple robot data sources. Each source may have its own directory structure, robot metadata, control frequency, sensor configuration, and action representation. During ingestion, Baihu registers each source with an embodiment tag, task name, episode identity, and available modality fields. This registration step makes it possible to trace each processed episode back to its source platform and task context.
+The raw Baihu v2.0 records are first organized in HDF5 files. HDF5 is used as the source container for robot trajectories before conversion. During ingestion, each trajectory is registered with its data source, embodiment tag, task name, episode identity, and available modality fields. This registration step makes it possible to trace each processed episode back to its source platform and task context.
 
 The ingestion stage is designed for heterogeneous robot data. Different embodiments may include full-size humanoid robots, humanoid-like wheeled platforms, dual-arm robots, single-arm manipulators, or portable data collection devices. Rather than assuming a single robot morphology, Baihu preserves platform-specific state and action schemas. This design allows each robot to retain its native control representation while still being organized under a common dataset interface.
 
-For each ingested episode, the pipeline records the available modalities. A typical trajectory may contain visual observations, robot proprioceptive states, robot actions, task annotations, timestamps or frame indices, and episode-level metadata. The exact fields depend on the source embodiment and collection setup.
+For each ingested episode, the pipeline extracts the available modalities from the source HDF5 record. A typical trajectory may contain visual observations, robot proprioceptive states, robot actions, task annotations, timestamps or frame indices, and episode-level metadata. The exact fields depend on the source embodiment and collection setup.
 
 ## 4.2 Multi-stage quality control
 
@@ -52,13 +52,15 @@ This design avoids forcing heterogeneous end-effectors into an artificial shared
 
 For completeness, the final dataset documentation should include an embodiment-level description of end-effector representations, including whether the platform uses a parallel gripper, dexterous hand, or other end-effector; the number of gripper or hand action dimensions; the physical travel range used in the stored data; and whether the stored values represent position, width, joint angle, or another control variable.
 
-## 4.7 LeRobot v2.1 conversion and toolchain
+## 4.7 HDF5-to-LeRobot v2.1 conversion
 
-After validation and schema alignment, data is converted into the LeRobot v2.1-compatible format. Each episode is represented as a temporally ordered trajectory of observation-action pairs, with associated task and metadata fields. This format allows the dataset to be loaded by robot learning pipelines and reused across different model training experiments.
+After validation and schema alignment, each HDF5 trajectory is converted into the LeRobot v2.1 format. In this conversion, numerical trajectory data such as states, actions, timestamps, episode indices, and task indices are written into LeRobot data files, while visual observations are stored as videos when image streams are available. Episode-level and task-level metadata are written into the LeRobot metadata files.
 
-The Baihu toolchain also supports data inspection and format conversion. Dataset visualization tools are used to inspect numerical values, joint trajectories, image streams, and video content. A Python-based conversion toolchain supports conversion between the Baihu data representation and the LeRobot-compatible representation used for model training. This toolchain helps reduce the gap between dataset construction and downstream training.
+A LeRobot v2.1 dataset is organized as a dataset folder containing `meta/`, `data/`, and `videos/`. In the v2.1 layout, trajectory data is stored as episode-level Parquet files such as `data/chunk-000/episode_000000.parquet`, and video streams are stored by chunk, camera, and episode, such as `videos/chunk-000/<camera_name>/episode_000000.mp4`. Metadata includes files such as `meta/info.json`, `meta/episodes.jsonl`, `meta/tasks.jsonl`, and dataset statistics.
 
-The final Baihu v2.0 dataset card should include the concrete LeRobot directory layout and schema, including episode file layout, task metadata schema, dataset information schema, dataset statistics schema, video storage format, and train/validation/test split files. This information is needed for reproducibility and for external users who want to load Baihu using standard robot learning pipelines.
+The conversion from HDF5 to LeRobot v2.1 therefore performs three main operations. First, it extracts synchronized trajectory arrays and metadata from the source HDF5 files. Second, it writes observation-action trajectories into the LeRobot tabular data layout and stores visual observations in the expected video layout. Third, it generates the metadata required to load the dataset through LeRobot-compatible training pipelines.
+
+This conversion step is central to Baihu v2.0 because it separates the source storage format from the training format. HDF5 provides a compact raw trajectory container, while LeRobot v2.1 provides a standardized interface for model training, evaluation, and dataset statistics.
 
 ## 4.8 Version management and reproducibility
 
@@ -74,7 +76,7 @@ The current paper draft describes the processing pipeline at the system level. B
 
 | Missing item | Why it matters |
 |---|---|
-| Raw directory structure | Needed to describe how source data enters the pipeline |
+| HDF5 source schema | Needed to describe how source trajectories are represented before conversion |
 | LeRobot v2.1 directory layout | Needed for reproducibility and external loading |
 | Exact observation fields | Needed to specify image, state, and metadata modalities |
 | Exact action schemas by embodiment | Needed to define ALL MSE and Joint MSE dimensions precisely |
