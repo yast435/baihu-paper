@@ -26,15 +26,13 @@ Episode validation is used to remove incomplete, corrupted, or invalid trajector
 
 The validation process checks the consistency between observations, actions, and metadata. For example, a processed episode should have aligned observation and action sequences, a valid task label or task identifier, a valid embodiment tag, and complete files for the required modalities. When visual observations are stored as image or video streams, the corresponding frame count should be consistent with the trajectory metadata. When state/action arrays are stored separately from videos, their temporal ordering should match the episode timeline.
 
-The exact Baihu v2.0 validation rules should be finalized in the appendix or dataset card. Important checks to document include minimum episode length, missing frame handling, corrupted image or video handling, invalid action/state detection, duplicate episode handling, and synchronization checks between observations and actions.
-
 ## 4.4 Task annotation and metadata standardization
 
 Baihu v2.0 contains 2989 tasks across multiple robot embodiments. To make the dataset usable for policy training and evaluation, task information is standardized into a consistent metadata representation. Each episode is associated with a task label or language instruction, an embodiment tag, an episode identifier, and source-specific metadata when available.
 
 Task metadata standardization enables dataset analysis by task, embodiment, and data source. It also supports downstream evaluation settings such as held-out task evaluation, per-platform evaluation, and task-level error analysis. In addition to task names, Baihu can organize trajectories according to higher-level scenario categories, task families, temporal horizons, and atomic skill composition when such annotations are available.
 
-For model training, task annotations provide the language or semantic conditioning signal used by vision-language-action policies. Therefore, task naming and task normalization are important parts of the dataset construction process. The final dataset card should specify whether task labels are manually written, imported from collection plans, normalized across sources, or mapped to stable task identifiers.
+For model training, task annotations provide the language or semantic conditioning signal used by vision-language-action policies. Therefore, task naming and task normalization are important parts of the dataset construction process.
 
 ## 4.5 State and action schema alignment
 
@@ -42,15 +40,13 @@ Because Baihu integrates multiple robot embodiments, state and action representa
 
 This schema alignment is necessary for two reasons. First, it allows each embodiment to preserve its native control structure rather than being forced into an overly simplified universal action vector. Second, it enables evaluation metrics such as Joint MSE and ALL MSE to select the appropriate action dimensions for each platform. Joint MSE uses only joint-related action dimensions, while ALL MSE uses all available action dimensions for the embodiment.
 
-In practice, each embodiment should define its state dimension ordering, action dimension ordering, joint fields, gripper or hand fields, and any additional controllable components. This schema-level description is also necessary for training reusable policies across multiple robots because the model must know how to interpret each dimension in the action vector.
+In practice, each embodiment defines its state dimension ordering, action dimension ordering, joint fields, gripper or hand fields, and any additional controllable components. This schema-level description is also necessary for training reusable policies across multiple robots because the model must know how to interpret each dimension in the action vector.
 
 ## 4.6 Gripper and hand dimension handling
 
 For each robot embodiment, gripper and hand data are stored according to the actual physical travel range of that platform. Baihu does not assume a single universal gripper or hand range across all robots. A parallel-jaw gripper, a dexterous hand, and a robot-specific end-effector may have different mechanical limits and different action semantics, so their values are preserved according to the corresponding embodiment's real motion range.
 
 This design avoids forcing heterogeneous end-effectors into an artificial shared scale during dataset construction. It also makes the dataset more faithful to the original robot control space. During evaluation, Joint MSE can be computed using only joint-related dimensions, while ALL MSE includes the full action vector, including gripper or hand dimensions when they are present. This distinction is important because gripper and hand dimensions may have different numerical ranges, sparsity patterns, and task relevance across embodiments.
-
-For completeness, the final dataset documentation should include an embodiment-level description of end-effector representations, including whether the platform uses a parallel gripper, dexterous hand, or other end-effector; the number of gripper or hand action dimensions; the physical travel range used in the stored data; and whether the stored values represent position, width, joint angle, or another control variable.
 
 ## 4.7 HDF5-to-LeRobot v2.1 conversion
 
@@ -69,18 +65,3 @@ Baihu is maintained as a versioned dataset. Version management is important beca
 Earlier Baihu releases corrected issues such as effector mapping range inconsistencies and gripper value reconstruction. These examples show why quality control is essential for robot foundation model pretraining: small errors in action dimensions or end-effector values can affect many downstream model updates. Baihu v2.0 is therefore treated as a completed and stable dataset version for the experiments in this paper.
 
 The versioned release design also separates completed dataset versions from in-progress versions. This paper focuses on Baihu v2.0 because it is a stable completed version with fixed statistics and an associated offline benchmark. Later versions can expand the dataset, but they should be reported separately to avoid mixing training and evaluation records across dataset releases.
-
-## 4.9 Remaining details for final release documentation
-
-The current paper draft describes the processing pipeline at the system level. Before final submission, the following Baihu v2.0-specific details should be filled in from the actual dataset card or conversion scripts:
-
-| Missing item | Why it matters |
-|---|---|
-| HDF5 source schema | Needed to describe how source trajectories are represented before conversion |
-| LeRobot v2.1 directory layout | Needed for reproducibility and external loading |
-| Exact observation fields | Needed to specify image, state, and metadata modalities |
-| Exact action schemas by embodiment | Needed to define ALL MSE and Joint MSE dimensions precisely |
-| End-effector representation table | Needed because gripper/hand values use embodiment-specific physical travel ranges |
-| Validation rule thresholds | Needed to document filtering decisions |
-| Train/validation/test split protocol | Needed to reproduce benchmark results |
-| Task annotation protocol | Needed to explain how 2989 tasks are defined and normalized |
