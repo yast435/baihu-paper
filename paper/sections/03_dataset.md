@@ -54,7 +54,7 @@ This temporal diversity is important for embodied foundation model training. Sho
 
 ## 3.8 Data format
 
-Baihu v2.0 is organized in the LeRobot format. Each episode is represented as a trajectory consisting of temporally ordered observation-action pairs. Depending on the original robot platform and task setup, each trajectory may include visual observations, robot state information, action commands, task labels, and metadata. The standardized format is intended to support direct loading by robot learning pipelines and large-scale model training systems.
+Baihu v2.0 is converted from HDF5 source records into the LeRobot v2.1 format. Each episode is represented as a trajectory consisting of temporally ordered observation-action pairs. Depending on the original robot platform and task setup, each trajectory may include visual observations, robot state information, action commands, task labels, and metadata. The standardized format is intended to support direct loading by robot learning pipelines and large-scale model training systems.
 
 A typical Baihu trajectory can be represented as:
 
