@@ -8,7 +8,9 @@ Although later versions such as Baihu v3 and Baihu v4 are under development, the
 
 ## 3.2 Dataset scale
 
-Baihu v2.0 provides a large-scale robot data foundation for embodied model pretraining. Its overall statistics are summarized below.
+Baihu v2.0 provides a large-scale robot data foundation for embodied model pretraining. Its overall statistics are summarized in **Table 1**.
+
+**Table 1. Baihu dataset version statistics.** The table compares completed Baihu dataset versions by duration, task count, episode count, and frame count.
 
 | Dataset Version | Status | Hours | Tasks | Episodes | Frames |
 |---|---:|---:|---:|---:|---:|
@@ -26,7 +28,9 @@ Baihu v2.0 integrates multi-source robot manipulation data curated for model tra
 
 ## 3.4 Embodiment distribution
 
-Baihu v2.0 contains data from 14 embodiment tags, covering a diverse set of robot platforms and data sources. The dataset is not uniformly distributed across embodiments. Instead, it follows a long-tailed distribution in which a few high-resource embodiments contribute the majority of the data, while several low-resource embodiments provide additional embodiment diversity.
+Baihu v2.0 contains data from 14 embodiment tags, covering a diverse set of robot platforms and data sources. **Table 2** summarizes the embodiment-level distribution. The dataset is not uniformly distributed across embodiments. Instead, it follows a long-tailed distribution in which a few high-resource embodiments contribute the majority of the data, while several low-resource embodiments provide additional embodiment diversity.
+
+**Table 2. Embodiment-level distribution of Baihu v2.0.** The table reports tasks, episodes, frames, hours, and duration percentage for each of the 14 embodiment tags.
 
 The largest embodiment subset is **genie1**, which contains 4253.51 hours of data and accounts for 44.67% of the total dataset duration. The next largest subsets are **gr2** with 959.40 hours, **xinghaitu_r1** with 896.88 hours, **qinlongros1** with 747.41 hours, and **zhiyuana2** with 646.74 hours. Together, the top five embodiment tags contribute approximately 78.81% of the total dataset duration. This distribution suggests that Baihu v2.0 provides both large-scale high-resource training data and a long tail of lower-resource embodiments for studying cross-embodiment generalization.
 
