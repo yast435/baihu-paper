@@ -1,55 +1,69 @@
 # 5. Benchmark Design
 
-To demonstrate the value of Baihu for embodied foundation model training, we propose the following benchmark protocol.
+To demonstrate the value of Baihu for embodied foundation model training, we evaluate whether a model trained on Baihu v2.0 improves offline action prediction on unseen tasks across multiple robot embodiments. The current benchmark focuses on open-loop zero-shot evaluation, where the model predicts actions from recorded observations and the predictions are compared against ground-truth actions in held-out trajectories.
 
-## 5.1 Open-loop action prediction
+## 5.1 Offline open-loop zero-shot evaluation
 
-Open-loop evaluation measures whether a trained policy can predict ground-truth robot actions from recorded observations and language/task inputs. This evaluation can be performed on held-out Baihu validation episodes. Metrics may include mean absolute error, mean squared error, per-dimension action error, gripper prediction accuracy, and action smoothness.
+Open-loop evaluation provides an offline assessment by comparing the model's predicted actions against ground-truth actions from robot demonstration data. In this benchmark, we compare two GR00T N1.6 checkpoints:
 
-Because Baihu v2.0 is a multi-embodiment dataset with a long-tailed distribution, open-loop metrics should be reported both globally and per embodiment. A global average alone may be dominated by high-resource embodiments such as genie1 and may hide poor performance on low-resource embodiments.
+| Checkpoint | Description |
+|---|---|
+| GR00T N1.6 / checkpoint-1 | No-training checkpoint, used as the baseline |
+| GR00T N1.6 / checkpoint-390000 | Complete 1-epoch checkpoint trained on BAIHU_v2.0 |
 
-## 5.2 Data scaling
+The evaluation covers **13 embodiments / platforms** and **39 unseen tasks**. This setting is designed to measure whether Baihu v2.0 pretraining improves cross-task offline prediction performance without additional task-specific finetuning on the evaluation tasks.
 
-A key question for large-scale robot datasets is how model performance changes with data scale. Baihu enables data scaling experiments by training the same model on different fractions of the dataset, such as 10%, 25%, 50%, and 100%. This analysis can reveal whether additional robot data continues to improve action prediction and policy generalization.
+## 5.2 Evaluation metrics
 
-## 5.3 Task generalization
+The benchmark reports two MSE metrics.
 
-Task generalization evaluates whether a model trained on Baihu can perform well on held-out tasks, held-out objects, or held-out scenarios. Depending on the task annotation granularity, the dataset can be split by task category, object type, data source, or robot embodiment.
+**ALL MSE** computes the mean squared error using all action dimensions available in the dataset. This metric reflects the model's full action prediction error, including arm, gripper, hand, or other action dimensions when they are present.
 
-Potential evaluation settings include:
+**Joint MSE** computes the mean squared error using only the joint-related action dimensions. Gripper or hand dimensions are excluded from this metric. This metric is useful because hand and gripper dimensions may have different scales, semantics, or sparsity patterns across embodiments, and may otherwise dominate or distort the action prediction error.
 
-- in-distribution validation episodes;
-- held-out tasks;
-- held-out embodiments;
-- high-resource-to-low-resource transfer;
-- source-specific evaluation.
+The evaluation follows the one-click batch open-loop evaluation workflow in `gr00t/batch_open_loop_eval.py`. The batch script evaluates combinations of checkpoints, embodiment tags, and datasets, generates statistics for each dataset, calls `gr00t/eval/open_loop_eval.py`, saves trajectory comparison plots, and writes average MSE results into a result table.
 
-## 5.4 Downstream policy evaluation
+## 5.3 Current benchmark material
 
-For robot foundation models, offline metrics alone are insufficient. Therefore, Baihu should also support downstream policy evaluation through real-world rollout or simulated evaluation. A policy pretrained on Baihu can be fine-tuned on a target robot and evaluated by task success rate, completion time, failure mode, and robustness to object pose variation.
+The current source material is stored in:
 
-## 5.5 Suggested baseline models
+```text
+materials/预训练离线实验记录表_测试记录数据总表_0430-同任务机型性能对比.xlsx
+```
 
-The following models can be considered as baselines depending on implementation availability:
+A structured summary of the experiment setting is maintained in:
 
-- GR00T / GR00T N1.7;
-- ACT;
-- Diffusion Policy;
-- OpenVLA-style policies;
-- other internal VLA or imitation-learning policies.
+```text
+paper/tables/offline_zero_shot_eval_summary.md
+```
 
-## 5.6 Results placeholder
+The numerical results still need to be extracted from the Excel file and converted into paper-ready tables and figures.
 
-The final paper should include at least one benchmark result table.
+## 5.4 Recommended result tables
 
-| Model | Training data | Evaluation split | Metric 1 | Metric 2 | Notes |
-|---|---|---|---:|---:|---|
-| [TBD] | Baihu v2 subset/full | validation | [TBD] | [TBD] | [TBD] |
+The final paper should include at least the following result tables:
 
-Recommended result tables:
+1. **Overall checkpoint comparison**: average ALL MSE and joint MSE for checkpoint-1 vs checkpoint-390000.
+2. **Per-embodiment comparison**: average metrics for each of the 13 evaluated embodiments.
+3. **Per-task comparison**: metrics for the 39 unseen tasks.
+4. **Metric comparison**: ALL MSE vs joint-only MSE to show the influence of gripper / hand dimensions.
+5. **Relative improvement**: percentage improvement from checkpoint-1 to checkpoint-390000.
 
-1. overall open-loop evaluation;
-2. per-embodiment evaluation;
-3. data scale ablation;
-4. high-resource vs low-resource embodiment comparison;
-5. downstream rollout success rate, if available.
+## 5.5 Recommended figures
+
+The benchmark section should include editable SVG / HTML figures generated from the extracted tables:
+
+1. Bar chart of overall ALL MSE and joint MSE for checkpoint-1 vs checkpoint-390000.
+2. Per-embodiment relative improvement plot.
+3. Scatter plot comparing ALL MSE and joint MSE across tasks.
+4. Sorted task-level improvement plot for the 39 unseen tasks.
+
+## 5.6 Additional benchmark extensions
+
+The current benchmark already provides a useful offline zero-shot comparison. Future versions can extend the benchmark with:
+
+- data-scaling evaluation using different fractions of Baihu v2.0;
+- high-resource vs low-resource embodiment evaluation;
+- held-out embodiment evaluation;
+- closed-loop simulation evaluation;
+- real-world rollout success rate.
