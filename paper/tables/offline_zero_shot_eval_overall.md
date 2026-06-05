@@ -16,14 +16,14 @@ Note: the user description says 13 machines and 39 unseen tasks, while the CSV c
 
 ## Overall MSE comparison
 
-The table below reports the unweighted mean across the paired task-dataset records in the CSV.
+The table below reports the unweighted mean across the paired task-dataset records in the CSV. The `智元G1 / 电源组件安装` row has been corrected after confirming that the checkpoint-1 and checkpoint-390000 MSE values were originally reversed.
 
 | Model checkpoint | Joint MSE ↓ | ALL MSE ↓ |
 |---|---:|---:|
-| checkpoint-1 (no training) | 0.113532 | 0.153642 |
-| checkpoint-390000 (Baihu v2.0, 1 epoch) | 0.003893 | 0.008692 |
-| Relative improvement | 96.57% | 94.34% |
+| checkpoint-1 (no training) | 0.116746 | 0.157283 |
+| checkpoint-390000 (Baihu v2.0, 1 epoch) | 0.000680 | 0.005051 |
+| Relative improvement | 99.42% | 96.79% |
 
 ## Interpretation
 
-After training on BAIHU_v2.0 for one epoch, GR00T N1.6/checkpoint-390000 substantially reduces the offline open-loop prediction error compared with the no-training checkpoint-1 baseline. Using the unweighted task-level mean, Joint MSE decreases from 0.113532 to 0.003893, and ALL MSE decreases from 0.153642 to 0.008692. This corresponds to a 96.57% improvement in Joint MSE and a 94.34% improvement in ALL MSE.
+After training on BAIHU_v2.0 for one epoch, GR00T N1.6/checkpoint-390000 substantially reduces the offline open-loop prediction error compared with the no-training checkpoint-1 baseline. Using the unweighted task-level mean, Joint MSE decreases from 0.116746 to 0.000680, and ALL MSE decreases from 0.157283 to 0.005051. This corresponds to a 99.42% improvement in Joint MSE and a 96.79% improvement in ALL MSE.
