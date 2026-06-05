@@ -33,27 +33,42 @@ Baihu follows the same broad direction of building large-scale robot data for em
 
 \begin{table}[t]
 \centering
-\caption{Comparison with representative robot manipulation datasets. Public dataset numbers are listed according to the cited papers.}
+\caption{Comparison with representative robot manipulation datasets. The table reports trajectory or episode count, task count, and skill count when available.}
 \label{tab:dataset-comparison}
 \footnotesize
-\setlength{\tabcolsep}{4pt}
-\renewcommand{\arraystretch}{1.15}
-\begin{adjustbox}{max width=\textwidth}
-\begin{tabular}{p{0.24\textwidth}p{0.25\textwidth}p{0.28\textwidth}p{0.19\textwidth}}
+\setlength{\tabcolsep}{5pt}
+\renewcommand{\arraystretch}{1.08}
+\begin{adjustbox}{max width=0.95\textwidth}
+\begin{tabular}{lrrr}
 \toprule
-Dataset & Multi-embodiment & Scale & Tasks / Skills \\
+Dataset & Traj. / Ep. & Tasks & Skills \\
 \midrule
-RoboMIND~\cite{wu2024robomind} & Yes & 4 embodiments; hours not reported in the abstract & 479 tasks, 96 object classes \\
-DROID~\cite{khazatsky2024droid} & Limited / same robot setup across many sites & 350 hours, 564 scenes & 84 tasks \\
-Open X-Embodiment / RT-X~\cite{oneill2023openx} & Yes & 22 robots from 21 institutions & 527 skills / 160,266 tasks \\
-BridgeData V2~\cite{walke2023bridgedatav2} & Limited / one low-cost robot platform & 24 environments & Multi-task manipulation behaviors \\
-\textbf{Baihu v2.0} & \textbf{Yes} & \textbf{9521.75 hours, 1.03B frames, 14 embodiment tags} & \textbf{2989 tasks} \\
+Pinto and Gupta & 50k & n/a & 1 \\
+Home-LCA & 28k & n/a & 1 \\
+BrainRobotData & 800k & n/a & 1 \\
+Roboturk & 2.1k & 3 & 2 \\
+MIME & 8.2k & 20 & 20 \\
+Sketchy & 74.4k & 5 & n/a \\
+RoboNet & 162k & n/a & n/a \\
+BridgeData & 7.2k & 71 & 4 \\
+MT-Opt & 800k & 12 & 1 \\
+RT-1 & 130k & 700 & 8 \\
+BC-Z & 26k & 100 & 3 \\
+BridgeData V2~\cite{walke2023bridgedatav2} & 60.1k & n/a & 13 \\
+RoboSet & 98.5k & 38 & 6 \\
+RH20T & 13k & 140 & 33 \\
+DROID~\cite{khazatsky2024droid} & 76k & n/a & 86 \\
+BRMData & 0.5k & 10 & 7 \\
+Dobb-E & 5.6k & 109 & 6 \\
+Open X-Embodiment~\cite{oneill2023openx} & 1.4M & 160k & 217 \\
+RoboMIND~\cite{wu2024robomind} & 107k & 479 & 38 \\
+\textbf{Baihu v2.0} & \textbf{513.6k} & \textbf{2989} & \textbf{4} \\
 \bottomrule
 \end{tabular}
 \end{adjustbox}
 \end{table}
 
-Table~\ref{tab:dataset-comparison} highlights Baihu's distinguishing emphasis on billion-frame scale, multi-embodiment coverage, versioned data management, HDF5-to-LeRobot v2.1 standardization, and direct offline evaluation with GR00T N1.6 checkpoints.
+Table~\ref{tab:dataset-comparison} highlights Baihu's scale in terms of episode count and task coverage. Baihu v2.0 contains 513,575 episodes across 2989 tasks, and the current dataset statistics identify four skill categories.
 
 \subsection{Multi-embodiment robot learning}
 
@@ -88,26 +103,3 @@ Although later versions such as Baihu v3 and Baihu v4 are under development, the
 \subsection{Dataset scale}
 
 Baihu v2.0 provides a large-scale robot data foundation for embodied model pretraining. Its overall statistics are summarized in Table~\ref{tab:version-stats}.
-
-\begin{table}[t]
-\centering
-\caption{Baihu dataset version statistics. The table compares completed Baihu dataset versions by duration, task count, episode count, and frame count.}
-\label{tab:version-stats}
-\begin{tabular}{lrrrrr}
-\toprule
-Dataset Version & Status & Hours & Tasks & Episodes & Frames \\
-\midrule
-Baihu v1.0 & Completed & 2693.34 & 2120 & 144141 & 290880109 \\
-Baihu v1.1 / v1.2 & Completed & 2451.51 & 1287 & 96474 & 264763101 \\
-\textbf{Baihu v2.0} & \textbf{Completed} & \textbf{9521.75} & \textbf{2989} & \textbf{513575} & \textbf{1028349814} \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-Compared with Baihu v1, Baihu v2.0 significantly increases the dataset scale in terms of total duration, task number, episode number, and frame count. This expansion makes Baihu v2.0 suitable for large-scale pretraining of robot policies, rather than only task-specific imitation learning.
-
-Based on the total frame count and total duration, Baihu v2.0 has an average recording rate of approximately 30 frames per second. Each episode contains approximately 2002 frames on average, corresponding to about 66.7 seconds per episode.
-
-\subsection{Data sources}
-
-Baihu v2.0 integrates multi-source robot manipulation data curated for model training. Source trajectories are first stored as HDF5 records and are then standardized into the LeRobot v2.1 format. This design separates source data ingestion from the final model-training format, allowing heterogeneous robot data to be processed under a unified dataset pipeline.
