@@ -33,7 +33,7 @@ Baihu follows the same broad direction of building large-scale robot data for em
 
 \begin{table}[t]
 \centering
-\caption{Comparison with representative robot manipulation datasets. The table reports trajectory or episode count, task count, and skill count when available.}
+\caption{Comparison with representative robot manipulation datasets. The table reports trajectory or episode count, task count, and skill count when available. Prior dataset statistics follow RoboMIND Table I~\cite{wu2024robomind}.}
 \label{tab:dataset-comparison}
 \footnotesize
 \setlength{\tabcolsep}{5pt}
@@ -43,26 +43,26 @@ Baihu follows the same broad direction of building large-scale robot data for em
 \toprule
 Dataset & Traj. / Ep. & Tasks & Skills \\
 \midrule
-Pinto and Gupta & 50k & n/a & 1 \\
-Home-LCA & 28k & n/a & 1 \\
-BrainRobotData & 800k & n/a & 1 \\
-Roboturk & 2.1k & 3 & 2 \\
-MIME & 8.2k & 20 & 20 \\
-Sketchy & 74.4k & 5 & n/a \\
-RoboNet & 162k & n/a & n/a \\
-BridgeData & 7.2k & 71 & 4 \\
-MT-Opt & 800k & 12 & 1 \\
-RT-1 & 130k & 700 & 8 \\
-BC-Z & 26k & 100 & 3 \\
+Pinto and Gupta~\cite{pinto2016supersizing} & 50k & n/a & 1 \\
+Home-LCA~\cite{gupta2018robot} & 28k & n/a & 1 \\
+BrainRobotData~\cite{levine2018learning} & 800k & n/a & 1 \\
+RoboTurk~\cite{mandlekar2018roboturk} & 2.1k & 3 & 2 \\
+MIME~\cite{sharma2018mime} & 8.2k & 20 & 20 \\
+Sketchy~\cite{cabi2020scaling} & 74.4k & 5 & n/a \\
+RoboNet~\cite{dasari2020robonet} & 162k & n/a & n/a \\
+BridgeData~\cite{ebert2022bridge} & 7.2k & 71 & 4 \\
+MT-Opt~\cite{kalashnikov2021mtopt} & 800k & 12 & 1 \\
+RT-1~\cite{brohan2023rt1} & 130k & 700 & 8 \\
+BC-Z~\cite{jang2022bcz} & 26k & 100 & 3 \\
 BridgeData V2~\cite{walke2023bridgedatav2} & 60.1k & n/a & 13 \\
-RoboSet & 98.5k & 38 & 6 \\
-RH20T & 13k & 140 & 33 \\
+RoboSet~\cite{bharadhwaj2024roboagent} & 98.5k & 38 & 6 \\
+RH20T~\cite{fang2024rh20t} & 13k & 140 & 33 \\
 DROID~\cite{khazatsky2024droid} & 76k & n/a & 86 \\
-BRMData & 0.5k & 10 & 7 \\
-Dobb-E & 5.6k & 109 & 6 \\
+BRMData~\cite{zhang2024brmdata} & 0.5k & 10 & 7 \\
+Dobb-E~\cite{shafiullah2023dobbe} & 5.6k & 109 & 6 \\
 Open X-Embodiment~\cite{oneill2023openx} & 1.4M & 160k & 217 \\
 RoboMIND~\cite{wu2024robomind} & 107k & 479 & 38 \\
-\textbf{Baihu v2.0} & \textbf{513.6k} & \textbf{2989} & \textbf{64} \\
+\textbf{Baihu v2.0} & \textbf{513.6k} & \textbf{2989} & \textbf{4} \\
 \bottomrule
 \end{tabular}
 \end{adjustbox}
