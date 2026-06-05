@@ -50,13 +50,9 @@ This design avoids forcing heterogeneous end-effectors into an artificial shared
 
 ## 4.7 HDF5-to-LeRobot v2.1 conversion
 
-After validation and schema alignment, each HDF5 trajectory is converted into the LeRobot v2.1 format. In this conversion, numerical trajectory data such as states, actions, timestamps, episode indices, and task indices are written into LeRobot data files, while visual observations are stored as videos when image streams are available. Episode-level and task-level metadata are written into the LeRobot metadata files.
+After validation and schema alignment, Baihu v2.0 is converted from the source HDF5 format into the LeRobot v2.1 format. This conversion standardizes heterogeneous robot trajectories into a common representation for model training and evaluation. The converted dataset stores observation-action trajectories, task information, embodiment metadata, and episode-level indexing in a LeRobot-compatible structure.
 
-A LeRobot v2.1 dataset is organized as a dataset folder containing `meta/`, `data/`, and `videos/`. In the v2.1 layout, trajectory data is stored as episode-level Parquet files such as `data/chunk-000/episode_000000.parquet`, and video streams are stored by chunk, camera, and episode, such as `videos/chunk-000/<camera_name>/episode_000000.mp4`. Metadata includes files such as `meta/info.json`, `meta/episodes.jsonl`, `meta/tasks.jsonl`, and dataset statistics.
-
-The conversion from HDF5 to LeRobot v2.1 therefore performs three main operations. First, it extracts synchronized trajectory arrays and metadata from the source HDF5 files. Second, it writes observation-action trajectories into the LeRobot tabular data layout and stores visual observations in the expected video layout. Third, it generates the metadata required to load the dataset through LeRobot-compatible training pipelines.
-
-This conversion step is central to Baihu v2.0 because it separates the source storage format from the training format. HDF5 provides a compact raw trajectory container, while LeRobot v2.1 provides a standardized interface for model training, evaluation, and dataset statistics.
+This conversion step separates the source storage format from the training format. HDF5 provides the raw trajectory container, while LeRobot v2.1 provides the standardized dataset interface used by downstream imitation-learning and vision-language-action training pipelines.
 
 ## 4.8 Version management and reproducibility
 
