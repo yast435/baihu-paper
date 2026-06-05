@@ -1,16 +1,14 @@
 # 4. Data Processing Pipeline
 
-Baihu is constructed through a multi-stage data processing pipeline. The goal of this pipeline is to convert heterogeneous raw robot data into a consistent and trainable format.
+Baihu is constructed through a multi-stage data processing pipeline. The goal of this pipeline is to convert heterogeneous raw robot data into a consistent and trainable format while preserving embodiment-specific information that is important for policy learning. Because Baihu v2.0 integrates data from multiple robot platforms, the processing pipeline must handle differences in sensor configurations, robot states, action spaces, gripper or hand structures, and task metadata.
 
-First, raw robot trajectories are collected or integrated from different data sources. Each trajectory is associated with task information and robot operation records. Second, data validation is performed to remove incomplete, corrupted, or invalid episodes. Third, robot states and actions are converted into unified representations. Fourth, embodiment-specific fields such as gripper or effector ranges are normalized to ensure consistency across different subsets. Finally, the processed data is converted into the LeRobot format and registered under a versioned dataset release.
+At a high level, raw robot trajectories are first collected or integrated from multiple sources. Each trajectory is associated with task information, robot operation records, and embodiment-specific metadata. The data is then validated, standardized, and converted into a LeRobot-compatible representation. The resulting Baihu v2.0 release provides a versioned dataset that can be used for large-scale imitation learning and vision-language-action model training.
 
-The version history of Baihu shows that earlier releases corrected issues such as inconsistent effector mapping ranges and gripper value reconstruction. This highlights the importance of versioned data management for robot learning datasets. Small inconsistencies in action normalization or gripper mapping can significantly affect model training, especially when the dataset is used for large-scale policy pretraining.
+## 4.1 Multi-source raw data ingestion
 
-## 4.1 Raw data ingestion
+Raw data is integrated from multiple robot data sources. Each source may have its own directory structure, robot metadata, control frequency, sensor configuration, and action representation. During ingestion, Baihu keeps track of the data source, embodiment tag, task name, episode identity, and available modalities.
 
-Raw data is integrated from multiple robot data sources. The exact raw formats and source-specific fields should be documented here.
-
-**To be filled:**
+The final paper should further document the following source-level details:
 
 - raw data formats;
 - source directory structure;
@@ -19,42 +17,69 @@ Raw data is integrated from multiple robot data sources. The exact raw formats a
 - camera streams and resolutions;
 - language or task annotation source.
 
-## 4.2 Trajectory validation
+## 4.2 Episode validation and filtering
 
-Trajectory validation is used to filter incomplete or invalid episodes before model training. The final paper should describe the validation rules explicitly.
+Episode validation is used to remove incomplete, corrupted, or invalid trajectories before model training. A valid episode should contain temporally ordered observations and actions, consistent task metadata, and usable modality fields. Validation is especially important for large-scale robot datasets because a small percentage of invalid episodes can still correspond to many hours of data.
 
-**To be filled:**
+The final paper should explicitly describe the validation rules, including:
 
 - minimum episode length;
 - missing frame handling;
 - corrupted image handling;
-- invalid action/state detection;
+- invalid action or state detection;
 - task label validation;
 - duplicate episode removal.
 
-## 4.3 State and action normalization
+## 4.3 Task annotation and metadata standardization
 
-Because Baihu integrates multiple robot embodiments, state and action representations must be normalized or standardized before training. Earlier Baihu versions fixed effector mapping range inconsistencies and gripper value reconstruction issues, suggesting that state/action normalization is a central part of the dataset pipeline.
+Baihu v2.0 contains thousands of tasks across multiple robot embodiments. To make the dataset usable for policy training and evaluation, task information is standardized into a consistent metadata representation. Each episode is associated with a task label or language instruction, an embodiment tag, an episode identifier, and source-specific metadata when available.
 
-**To be filled:**
+Task metadata standardization makes it possible to analyze the dataset distribution by task, embodiment, and data source. It also supports downstream evaluation settings such as held-out task evaluation, per-platform evaluation, and task-level error analysis.
+
+## 4.4 State and action schema alignment
+
+Because Baihu integrates multiple robot embodiments, state and action representations must be aligned before training. Different platforms may have different numbers of joints, different gripper or hand structures, and different action semantics. Baihu therefore uses embodiment-specific schemas to describe which dimensions correspond to arm joints, grippers, hands, or other controllable components.
+
+This schema alignment is necessary for two reasons. First, it allows each embodiment to preserve its native control structure rather than being forced into an overly simplified universal action vector. Second, it enables evaluation metrics such as Joint MSE and ALL MSE to select the appropriate action dimensions for each platform.
+
+The final paper should further specify:
 
 - action space definitions by embodiment;
 - state space definitions by embodiment;
-- gripper / effector mapping rules;
-- clipping ranges;
-- normalization and de-normalization formulas;
-- treatment of missing fields.
+- dimension ordering for joints, grippers, hands, and other effectors;
+- treatment of missing fields;
+- clipping or validity checks applied during conversion.
 
-## 4.4 LeRobot conversion
+## 4.5 Gripper and hand dimension handling
 
-After validation and normalization, data is converted into the LeRobot-compatible format. The final paper should describe the generated files, metadata schema, and loading process.
+For each robot embodiment, gripper and hand data are stored according to the actual physical travel range of that platform. In other words, Baihu does not assume a single universal gripper or hand range across all robots. A parallel-jaw gripper, a dexterous hand, and a robot-specific end-effector may have different mechanical limits and different action semantics, so their values are preserved according to the corresponding embodiment's real motion range.
 
-**To be filled:**
+This design avoids forcing heterogeneous end-effectors into an artificial shared scale before dataset construction. It also makes the dataset more faithful to the original robot control space. During evaluation, Joint MSE can be computed using only joint-related dimensions, while ALL MSE includes the full action vector, including gripper or hand dimensions when they are present. This distinction is important because gripper and hand dimensions may have different numerical ranges, sparsity patterns, and task relevance across embodiments.
+
+The final paper should add an embodiment-level table describing the gripper or hand representation for each platform, including:
+
+- whether the platform uses a parallel gripper, dexterous hand, or other end-effector;
+- the number of gripper or hand action dimensions;
+- the physical travel range used in the stored data;
+- whether the value represents position, width, joint angle, or another control variable;
+- how the dimension is included or excluded in Joint MSE and ALL MSE.
+
+## 4.6 LeRobot v2.1 conversion
+
+After validation and schema alignment, data is converted into the LeRobot v2.1-compatible format. Each episode is represented as a temporally ordered trajectory of observation-action pairs, with associated task and metadata fields. This format allows the dataset to be loaded by robot learning pipelines and reused across different model training experiments.
+
+The final paper should describe the generated files, metadata schema, and loading process, including:
 
 - LeRobot version;
 - episode file layout;
-- `tasks.jsonl` schema;
-- `info.json` schema;
-- `stats.json` schema;
+- task metadata schema;
+- dataset information schema;
+- dataset statistics schema;
 - video storage format;
 - train/validation/test split files.
+
+## 4.7 Version management and quality control
+
+Baihu is maintained as a versioned dataset. Version management is important because large-scale robot datasets often require iterative fixes to action mappings, gripper or hand representations, task annotations, and metadata. By tracking dataset versions, Baihu makes it possible to reproduce training runs and understand which data corrections or additions are included in each release.
+
+Earlier Baihu releases corrected issues such as effector mapping range inconsistencies and gripper value reconstruction. These examples show why quality control is essential for robot foundation model pretraining: small errors in action dimensions or end-effector values can affect many downstream model updates. Baihu v2.0 is therefore treated as a completed and stable dataset version for the experiments in this paper.
