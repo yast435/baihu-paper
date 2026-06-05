@@ -1,0 +1,21 @@
+# 1. Introduction
+
+Recent progress in large language models and vision-language models has shown that model capability can be significantly improved through large-scale pretraining on diverse data. Robotics, however, still lacks the same level of scalable data infrastructure. Robot learning data is expensive to collect, difficult to standardize, and highly dependent on robot embodiment, sensor configuration, task definition, and action representation. As a result, many robot policies are still trained on relatively small task-specific datasets, limiting their generalization across environments, objects, and manipulation skills.
+
+Vision-language-action models and embodied foundation models require large-scale robot interaction data to learn generalizable mappings from visual observations, language instructions, robot states, and actions. Recent efforts such as RoboMIND, DROID, BridgeData V2, and Open X-Embodiment have demonstrated the importance of large-scale robot manipulation datasets for imitation learning and generalist policy training. These datasets show that diverse real-world robot trajectories, multi-view observations, language annotations, and standardized data protocols can substantially improve robot policy learning. However, there remains a need for larger, standardized, pretraining-oriented robot datasets that can support industrial-scale model development and systematic evaluation.
+
+To address this need, we present **Baihu v2.0**, a large-scale, multi-embodiment robot manipulation dataset for embodied foundation model pretraining and evaluation. Baihu v2.0 contains **9521.75 hours** of robot data, **2989 tasks**, **513575 episodes**, and **1028349814 frames**. Compared with small task-specific datasets, Baihu is designed to support large-scale multi-task policy learning. Compared with unstructured data collections, Baihu emphasizes version management, format standardization, and model-oriented data organization. The dataset is converted into the LeRobot format, making it compatible with modern robot learning pipelines and scalable training workflows.
+
+The goal of Baihu is not only to accumulate robot data, but also to establish a reusable data foundation for embodied intelligence. A large-scale robot dataset should answer three questions: what skills are represented, how the data is standardized, and how the data can be used to train and evaluate models. Therefore, this paper describes the Baihu dataset from three perspectives: dataset construction, data standardization, and benchmark evaluation. We first introduce the data sources and version definition of Baihu v2.0. We then describe the data processing pipeline, including trajectory validation, task organization, action/state normalization, and format conversion. Finally, we propose benchmark experiments for evaluating robot policies trained on Baihu, including open-loop action prediction, task-level generalization, and data-scaling studies.
+
+The main contributions of this work are as follows:
+
+1. We introduce **Baihu v2.0**, a billion-frame, multi-embodiment robot manipulation dataset containing 9521.75 hours of data, 2989 tasks, 513575 episodes, and 1028349814 frames for embodied foundation model pretraining.
+
+2. We present a standardized robot data organization pipeline that converts multi-source robot operation data into a unified LeRobot-compatible format, enabling scalable training of robot policies and vision-language-action models.
+
+3. We characterize the embodiment-level distribution of Baihu v2.0 and show that it contains both high-resource embodiments and a long tail of low-resource embodiments, providing a foundation for studying cross-embodiment generalization.
+
+4. We define a benchmark protocol for evaluating embodied foundation models on Baihu, including open-loop action prediction, data scale ablation, task generalization, and downstream robot policy evaluation.
+
+5. We provide a versioned dataset management framework that supports continuous dataset expansion from Baihu v1 to Baihu v2 and future large-scale versions, making the dataset suitable for iterative model development.
