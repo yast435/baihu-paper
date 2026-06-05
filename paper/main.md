@@ -36,4 +36,4 @@ See [`sections/07_conclusion.md`](sections/07_conclusion.md).
 
 ## Draft status
 
-This is a v0.1 Markdown draft. Several details remain placeholders and must be verified before submission, especially data sources, robot embodiment descriptions, modalities, train/validation/test splits, and benchmark results.
+This is a v0.2 Markdown draft. The main structure, abstract, dataset overview, HDF5-to-LeRobot v2.1 processing description, offline zero-shot benchmark, discussion, and conclusion have been drafted. Remaining work includes verifying the final Baihu v2.0 source description, adding formal citations, refining figure/table captions, confirming platform descriptions, and converting the Markdown draft into the target submission format.
