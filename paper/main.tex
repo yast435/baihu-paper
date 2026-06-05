@@ -53,27 +53,27 @@ Large-scale robot manipulation datasets have become a central resource for train
 
 Baihu follows the same broad direction of building large-scale robot data for embodied intelligence, but differs in its focus on pretraining-scale dataset construction, versioned data management, and HDF5-to-LeRobot v2.1 standardization. Baihu v2.0 contains 9521.75 hours of robot data, 2989 tasks, 513575 episodes, and 1028349814 frames. This makes Baihu not only a task collection, but a large-scale data foundation for embodied foundation model pretraining.
 
-\begin{landscape}
-\begin{table}[p]
+\begin{table}[t]
 \centering
-\caption{Comparison with representative robot manipulation datasets. This table compares Baihu v2.0 with representative large-scale robot manipulation datasets and benchmarks. Public dataset numbers are listed according to the cited papers.}
+\caption{Comparison with representative robot manipulation datasets. Public dataset numbers are listed according to the cited papers.}
 \label{tab:dataset-comparison}
-\small
-\begin{adjustbox}{max width=\linewidth}
-\begin{tabular}{p{0.18\linewidth}p{0.10\linewidth}p{0.18\linewidth}p{0.29\linewidth}p{0.24\linewidth}}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{p{0.24\textwidth}p{0.25\textwidth}p{0.28\textwidth}p{0.19\textwidth}}
 \toprule
-Dataset & Real robot & Multi-embodiment & Scale & Tasks / Skills \\
+Dataset & Multi-embodiment & Scale & Tasks / Skills \\
 \midrule
-RoboMIND~\cite{wu2024robomind} & Yes & Yes & 4 embodiments; hours not reported in the abstract & 479 tasks, 96 object classes \\
-DROID~\cite{khazatsky2024droid} & Yes & Limited / same robot setup across many sites & 350 hours, 564 scenes & 84 tasks \\
-Open X-Embodiment / RT-X~\cite{oneill2023openx} & Yes & Yes & 22 robots from 21 institutions & 527 skills / 160,266 tasks \\
-BridgeData V2~\cite{walke2023bridgedatav2} & Yes & Limited / one low-cost robot platform & 24 environments & Multi-task manipulation behaviors \\
-\textbf{Baihu v2.0} & \textbf{Yes} & \textbf{Yes} & \textbf{9521.75 hours, 1.03B frames, 14 embodiment tags} & \textbf{2989 tasks} \\
+RoboMIND~\cite{wu2024robomind} & Yes & 4 embodiments; hours not reported in the abstract & 479 tasks, 96 object classes \\
+DROID~\cite{khazatsky2024droid} & Limited / same robot setup across many sites & 350 hours, 564 scenes & 84 tasks \\
+Open X-Embodiment / RT-X~\cite{oneill2023openx} & Yes & 22 robots from 21 institutions & 527 skills / 160,266 tasks \\
+BridgeData V2~\cite{walke2023bridgedatav2} & Limited / one low-cost robot platform & 24 environments & Multi-task manipulation behaviors \\
+\textbf{Baihu v2.0} & \textbf{Yes} & \textbf{9521.75 hours, 1.03B frames, 14 embodiment tags} & \textbf{2989 tasks} \\
 \bottomrule
 \end{tabular}
 \end{adjustbox}
 \end{table}
-\end{landscape}
 
 Table~\ref{tab:dataset-comparison} highlights Baihu's distinguishing emphasis on billion-frame scale, multi-embodiment coverage, versioned data management, HDF5-to-LeRobot v2.1 standardization, and direct offline evaluation with GR00T N1.6 checkpoints.
 
