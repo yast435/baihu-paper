@@ -4,77 +4,101 @@
 
 - [ ] Verify the final data-source description for Baihu v2.0.
   - Current ambiguity: internal model-demand data + Ant-delivered data vs. internal model-demand data + Dwheel-filtered data.
-- [ ] Complete the 14-row embodiment distribution table.
-  - Required columns: `embodiment_tag`, platform description, data source, tasks, episodes, frames, hours, hours_percent.
-- [ ] Add task distribution statistics.
-  - Number of tasks per embodiment.
-  - Episodes per task.
-  - Hours per task.
-  - Long-tail task distribution.
-- [ ] Document observation and action schemas.
-  - Image modalities.
-  - Robot state fields.
-  - Action fields.
-  - Language/task annotations.
-- [ ] Define train/validation/test split.
+- [ ] Add platform descriptions for the 14 embodiment tags.
+  - `arx_loong`
+  - `astribots1`
+  - `cobotmagic`
+  - `dualur5e`
+  - `dwheel`
+  - `fr3`
+  - `genie1`
+  - `gr2`
+  - `lejukuaihu`
+  - `qinlongros1`
+  - `qinlongros2`
+  - `tianji`
+  - `xinghaitu_r1`
+  - `zhiyuana2`
+- [ ] Add formal citations and BibTeX entries.
+  - RoboMIND
+  - DROID
+  - Open X-Embodiment / RT-X
+  - BridgeData V2
+  - RH20T, AgiBot World, or other datasets if included in the comparison table
+- [ ] Decide target paper format.
+  - arXiv technical report
+  - conference-style LaTeX paper
+  - internal white paper
 
-## Dataset section
+## Completed draft components
+
+- [x] Working title
+- [x] Abstract with Baihu v2.0 scale and benchmark result
+- [x] Introduction
+- [x] Related Work draft
+- [x] Dataset Overview draft
+- [x] Data Processing Pipeline draft
+- [x] Benchmark Experiments draft
+- [x] Discussion and Limitations draft
+- [x] Conclusion draft
+- [x] Dataset comparison table
+- [x] Embodiment duration distribution table
+- [x] Offline zero-shot evaluation tables
+- [x] Editable Figure 1 pipeline HTML/SVG
+- [x] Editable benchmark HTML/SVG figures
+
+## Dataset section refinements
 
 - [ ] Confirm all Baihu v2.0 numbers:
   - 9521.75 hours;
   - 2989 tasks;
   - 513575 episodes;
   - 1028349814 frames.
-- [ ] Add exact LeRobot version and file schema.
-- [ ] Add examples of episode structure.
-- [ ] Add examples of task instructions.
-- [ ] Add embodiment descriptions:
-  - arx_loong;
-  - astribots1;
-  - cobotmagic;
-  - dualur5e;
-  - dwheel;
-  - fr3;
-  - genie1;
-  - gr2;
-  - lejukuaihu;
-  - qinlongros1;
-  - qinlongros2;
-  - tianji;
-  - xinghaitu_r1;
-  - zhiyuana2.
+- [ ] Decide whether to keep Baihu v1.1 / v1.2 as a combined row or separate rows.
+- [ ] Convert embodiment distribution table into final publication format.
+- [ ] Add concise platform descriptions for each embodiment tag.
+- [ ] Remove or rewrite any sentence that still sounds like an internal note.
 
 ## Figures
 
-- [ ] Figure 1: Baihu data pipeline.
-- [ ] Figure 2: embodiment duration distribution, preferably sorted horizontal bar chart rather than pie chart.
-- [ ] Figure 3: task distribution.
-- [ ] Figure 4: example trajectories / multi-view observations.
-- [ ] Figure 5: benchmark overview.
+- [x] Figure 1: Baihu data construction and evaluation pipeline.
+- [x] Figure 2: embodiment duration distribution editable figure.
+- [x] Figure 3: benchmark overview / result editable figure.
+- [ ] Figure: example trajectory or multi-view observation panel, if screenshots are available.
+- [ ] Finalize figure captions.
 
 ## Tables
 
-- [ ] Table 1: Baihu version comparison.
-- [ ] Table 2: complete embodiment-level statistics.
-- [ ] Table 3: comparison with RoboMIND, DROID, Open X-Embodiment, BridgeData V2, RH20T, AgiBot World.
-- [ ] Table 4: benchmark results.
-- [ ] Table 5: ablation results.
+- [x] Table: Baihu version comparison.
+- [x] Table: embodiment-level statistics.
+- [x] Table: dataset comparison with representative datasets.
+- [x] Table: overall offline zero-shot benchmark results.
+- [x] Table: per-platform benchmark results.
+- [x] Table: per-task benchmark results.
+- [ ] Finalize table captions and numbering.
 
 ## Experiments
 
-- [ ] Choose baseline models.
-  - Candidate: GR00T N1.7.
+- [x] Run GR00T N1.6 offline open-loop zero-shot evaluation.
+- [x] Report global metrics and per-platform metrics.
+- [x] Report task-level metrics.
+- [ ] Decide whether to add additional baseline models.
   - Candidate: ACT.
   - Candidate: Diffusion Policy.
-- [ ] Run open-loop action prediction.
-- [ ] Report global metrics and per-embodiment metrics.
-- [ ] Run data scale ablation: 10%, 25%, 50%, 100%.
-- [ ] Run high-resource vs low-resource embodiment evaluation.
+  - Candidate: GR00T N1.7.
+- [ ] Decide whether to run data scale ablation: 10%, 25%, 50%, 100%.
+- [ ] Decide whether to add high-resource vs low-resource embodiment evaluation.
 - [ ] Add real-world rollout results if available.
 
-## Writing
+## Writing and formatting
 
-- [ ] Expand Related Work with citations.
-- [ ] Add dataset comparison table.
-- [ ] Rewrite Abstract after experiment results are available.
+- [ ] Add citations in text.
+- [ ] Create `references.bib`.
+- [ ] Add figure/table references into the section text.
+- [ ] Check consistency of terminology:
+  - Baihu v2.0 / BAIHU_v2.0;
+  - LeRobot v2.1;
+  - HDF5-to-LeRobot conversion;
+  - 13 platforms and 42 paired task-dataset records;
+  - GR00T N1.6/checkpoint-1 and checkpoint-390000.
 - [ ] Convert Markdown draft to LaTeX when structure stabilizes.
