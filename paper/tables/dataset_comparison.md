@@ -1,6 +1,6 @@
-# Dataset comparison table
+# Table 6. Comparison with representative robot manipulation datasets
 
-This table compares Baihu v2.0 with representative large-scale robot manipulation datasets and benchmarks. Public dataset numbers are listed according to the cited papers and should be checked again before final submission formatting.
+This table compares Baihu v2.0 with representative large-scale robot manipulation datasets and benchmarks. Public dataset numbers are listed according to the cited papers.
 
 | Dataset | Real robot | Multi-embodiment | Scale | Tasks / Skills | Episodes / Trajectories | Format / Standardization | Main focus |
 |---|---|---|---:|---:|---:|---|---|
@@ -10,8 +10,4 @@ This table compares Baihu v2.0 with representative large-scale robot manipulatio
 | BridgeData V2 \cite{walke2023bridgedatav2} | Yes | Limited / one low-cost robot platform | 24 environments | Multi-task manipulation behaviors | 60,096 trajectories | Dataset for goal-image and language-conditioned learning | Scalable robot learning across environments and tasks |
 | **Baihu v2.0** | **Yes** | **Yes** | **9521.75 hours, 1.03B frames, 14 embodiment tags** | **2989 tasks** | **513,575 episodes** | **HDF5 source records converted to LeRobot v2.1** | **Billion-frame multi-embodiment data foundation for embodied foundation model pretraining and evaluation** |
 
-## Notes
-
-- Baihu v2.0 is compared using its completed v2.0 version statistics.
-- Baihu uses `episode` terminology, while some prior datasets use `trajectory`. In this table, both refer to temporally ordered robot demonstration sequences.
-- Baihu's distinguishing emphasis is the combination of billion-frame scale, multi-embodiment coverage, versioned data management, HDF5-to-LeRobot v2.1 standardization, and direct offline evaluation with GR00T N1.6 checkpoints.
+Baihu uses `episode` terminology, while some prior datasets use `trajectory`. In this table, both refer to temporally ordered robot demonstration sequences. Baihu's distinguishing emphasis is the combination of billion-frame scale, multi-embodiment coverage, versioned data management, HDF5-to-LeRobot v2.1 standardization, and direct offline evaluation with GR00T N1.6 checkpoints.
