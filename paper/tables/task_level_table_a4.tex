@@ -1,0 +1,73 @@
+% A4-width replacement for Appendix Table 7 / task-level benchmark table.
+% Use inside main.tex after \section{Task-level benchmark results}.
+% Required packages: booktabs, longtable, array, pdflscape.
+
+\begingroup
+\begin{landscape}
+\tiny
+\setlength{\tabcolsep}{2pt}
+\renewcommand{\arraystretch}{1.05}
+\setlength{\LTleft}{0pt}
+\setlength{\LTright}{0pt}
+
+\begin{longtable}{@{}p{0.085\linewidth}p{0.300\linewidth}p{0.070\linewidth}rrrrrr@{}}
+\caption{Task-level offline zero-shot evaluation results. The table reports Joint MSE, ALL MSE, and relative improvement for each of the 42 paired task-dataset records. Lower MSE is better.}\label{tab:task-level}\\
+\toprule
+Platform & Task & Type & Joint-1 & Joint-Baihu & $\Delta$Joint & ALL-1 & ALL-Baihu & $\Delta$ALL \\
+\midrule
+\endfirsthead
+\caption[]{Task-level offline zero-shot evaluation results (continued).}\\
+\toprule
+Platform & Task & Type & Joint-1 & Joint-Baihu & $\Delta$Joint & ALL-1 & ALL-Baihu & $\Delta$ALL \\
+\midrule
+\endhead
+\midrule
+\multicolumn{9}{r}{Continued on next page}\\
+\endfoot
+\bottomrule
+\endlastfoot
+Qinglong & Put a ballpoint pen into a pen holder &  & 0.179469 & 0.000248 & 99.86\% & 0.201477 & 0.003823 & 98.10\% \\
+Qinglong & Sort fruits and vegetables into baskets &  & 0.183410 & 0.000527 & 99.71\% & 0.207567 & 0.005064 & 97.56\% \\
+Qinglong & Throw trash into a trash can & Dual-arm & 0.132497 & 0.000339 & 99.74\% & 0.160485 & 0.000669 & 99.58\% \\
+Qinglong & Cover a pot with a lid &  & 0.180345 & 0.000200 & 99.89\% & 0.202733 & 0.002103 & 98.96\% \\
+Qinglong & Place an egg & Dual-arm & 0.133400 & 0.001388 & 98.96\% & 0.162696 & 0.001901 & 98.83\% \\
+Qinglong & Pack food & Dual-arm & 0.133672 & 0.000732 & 99.45\% & 0.148295 & 0.002839 & 98.09\% \\
+Zhiyuan A2 & Sort eggplants and bananas with a yellow-grid tabletop background & Dual-arm & 0.132409 & 0.000713 & 99.46\% & 0.222947 & 0.006068 & 97.28\% \\
+Zhiyuan A2 & Sort black and white tape with a small-fish-towel tabletop background & Dual-arm & 0.133624 & 0.001356 & 98.99\% & 0.227667 & 0.011405 & 94.99\% \\
+Zhiyuan A2 & Sort cross-shaped and cylindrical blocks with a red tabletop background & Dual-arm & 0.132239 & 0.000620 & 99.53\% & 0.225768 & 0.005214 & 97.69\% \\
+Fourier GR-2 & Place a toy duck & Dual-arm & 0.137008 & 0.001172 & 99.14\% & 0.244131 & 0.003854 & 98.42\% \\
+Fourier GR-2 & Sort toys & Dual-arm & 0.139023 & 0.001794 & 98.71\% & 0.231410 & 0.003836 & 98.34\% \\
+Fourier GR-2 & Sort green and yellow pears & Dual-arm & 0.137948 & 0.002447 & 98.23\% & 0.226048 & 0.003783 & 98.33\% \\
+Xinghaitu R1 & Put a spoon into a plate & Right-arm & 0.068287 & 0.000107 & 99.84\% & 0.110777 & 0.005057 & 95.44\% \\
+Xinghaitu R1 & Sort apples and pears & Dual-arm & 0.082550 & 0.000211 & 99.74\% & 0.124586 & 0.003934 & 96.84\% \\
+Xinghaitu R1 & Put a T-shirt into a basket & Right-arm & 0.075271 & 0.000274 & 99.64\% & 0.117380 & 0.005601 & 95.23\% \\
+Leju KUAVO & Place a kettle & Left-arm & 0.133692 & 0.000806 & 99.40\% & 0.158527 & 0.004078 & 97.43\% \\
+Leju KUAVO & Place an egg & Right-arm & 0.133315 & 0.000456 & 99.66\% & 0.155686 & 0.004150 & 97.33\% \\
+Leju KUAVO & Open a drawer, place an object inside, and close it & Dual-arm & 0.133361 & 0.000969 & 99.27\% & 0.157571 & 0.004777 & 96.97\% \\
+Songling Aloha & Put vegetable blocks into a bowl and center the container &  & 0.133895 & 0.000616 & 99.54\% & 0.159897 & 0.001871 & 98.83\% \\
+Songling Aloha & Pick and place chopsticks in a drawer and align tableware &  & 0.134391 & 0.001479 & 98.90\% & 0.151264 & 0.002772 & 98.17\% \\
+Songling Aloha & Put strawberries on a plate and stack cups &  & 0.133619 & 0.000752 & 99.44\% & 0.158443 & 0.002277 & 98.56\% \\
+Franka FR3 & Stack cups & Dual-arm & 0.051757 & 0.000510 & 99.02\% & 0.086843 & 0.002837 & 96.73\% \\
+Franka FR3 & Organize objects & Dual-arm & 0.038663 & 0.000731 & 98.11\% & 0.074911 & 0.005935 & 92.08\% \\
+Franka FR3 & Place a toy duck & Dual-arm & 0.034437 & 0.000892 & 97.41\% & 0.071658 & 0.004803 & 93.30\% \\
+Astribot S1 & Put a bowl onto a plate with a green tabletop background & Right-arm & 0.134600 & 0.000700 & 99.48\% & 0.159800 & 0.003900 & 97.56\% \\
+Astribot S1 & Put a spoon into a bowl with a green-grid tabletop background & Right-arm & 0.135232 & 0.000892 & 99.34\% & 0.155694 & 0.007153 & 95.41\% \\
+Astribot S1 & Place a cup and saucer with an orange tabletop background & Right-arm & 0.135401 & 0.000875 & 99.35\% & 0.160526 & 0.006405 & 96.01\% \\
+UR5e & Put a coin into a piggy bank & Right-arm & 0.062034 & 0.000031 & 99.95\% & 0.085492 & 0.010285 & 87.97\% \\
+UR5e & Stack blocks & Dual-arm & 0.062204 & 0.000131 & 99.79\% & 0.081088 & 0.008773 & 89.18\% \\
+UR5e & Semantic test & Dual-arm & 0.062930 & 0.000041 & 99.94\% & 0.084983 & 0.004632 & 94.55\% \\
+ARX & Fold clothes & Dual-arm & 0.137219 & 0.000791 & 99.42\% & 0.156832 & 0.001914 & 98.78\% \\
+ARX & Fold clothes with revised procedure & Dual-arm & 0.140643 & 0.002073 & 98.53\% & 0.166439 & 0.002632 & 98.42\% \\
+ARX & Fold clothes with detailed handling & Dual-arm & 0.136654 & 0.000363 & 99.73\% & 0.160718 & 0.000862 & 99.46\% \\
+Tianji & Arrange flowers & Dual-arm & 0.017314 & 0.000778 & 95.50\% & 0.089298 & 0.002285 & 97.44\% \\
+Tianji & Sort batteries & Dual-arm & 0.016675 & 0.000329 & 98.03\% & 0.106140 & 0.001487 & 98.60\% \\
+Tianji & Stack cups & Dual-arm & 0.019495 & 0.000730 & 96.26\% & 0.095306 & 0.002505 & 97.37\% \\
+Dwheel & Sort octopus toys with a small-fish-towel tabletop background & Dual-arm & 0.176082 & 0.000165 & 99.91\% & 0.203914 & 0.005410 & 97.35\% \\
+Dwheel & Sort green and yellow pears with a blue-grid tabletop background & Dual-arm & 0.176593 & 0.000242 & 99.86\% & 0.203826 & 0.006220 & 96.95\% \\
+Dwheel & Sort cylindrical and cuboid blocks with a green-grid tabletop background & Dual-arm & 0.176471 & 0.000217 & 99.88\% & 0.203759 & 0.003841 & 98.11\% \\
+Zhiyuan G1 & Install a bracket & Right-arm & 0.135378 & 0.000409 & 99.70\% & 0.167892 & 0.013138 & 92.17\% \\
+Zhiyuan G1 & Install a power module & Dual-arm & 0.135268 & 0.000291 & 99.78\% & 0.165634 & 0.012706 & 92.33\% \\
+Zhiyuan G1 & Assemble a touchpad & Dual-arm & 0.134856 & 0.000146 & 99.89\% & 0.169781 & 0.019328 & 88.62\% \\
+\end{longtable}
+\end{landscape}
+\endgroup
