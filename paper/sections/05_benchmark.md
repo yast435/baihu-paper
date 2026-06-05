@@ -25,7 +25,9 @@ For each task-dataset record, MSE is averaged over the evaluated trajectory step
 
 ## 5.3 Overall results
 
-The benchmark results show that one epoch of training on BAIHU_v2.0 substantially reduces offline open-loop prediction error across the 13 evaluated platforms and 42 paired task-dataset records.
+The benchmark results show that one epoch of training on BAIHU_v2.0 substantially reduces offline open-loop prediction error across the 13 evaluated platforms and 42 paired task-dataset records. The overall result is summarized in **Table 3** and visualized in **Figure 3**.
+
+**Table 3. Overall offline zero-shot open-loop evaluation results.** The table reports the unweighted mean over 42 paired task-dataset records. Lower MSE is better.
 
 | Model checkpoint | Joint MSE ↓ | ALL MSE ↓ |
 |---|---:|---:|
@@ -39,11 +41,15 @@ Compared with the no-training checkpoint-1 baseline, the Baihu-trained checkpoin
 
 Because Baihu v2.0 is a multi-embodiment dataset, aggregate metrics alone are insufficient. We therefore also report per-platform results. Across all 13 evaluated platforms, the Baihu-trained checkpoint achieves lower Joint MSE and ALL MSE than the no-training baseline.
 
+**Table 4. Per-platform offline zero-shot evaluation results.** The table reports the unweighted mean over paired task-dataset records for each evaluated platform.
+
 The per-platform results show consistent improvement across all evaluated robot platforms, suggesting that the pretraining effect is not limited to a single dominant embodiment. This is important for Baihu because the dataset is explicitly designed as a multi-embodiment training corpus.
 
 ## 5.5 Task-level analysis
 
 Task-level results further show that Baihu training improves offline prediction across the 42 paired task-dataset records. Task-level reporting is especially useful because different embodiments may have different action spaces, control frequencies, and gripper or hand dimensions.
+
+**Table 5. Task-level offline zero-shot evaluation results.** The table reports Joint MSE, ALL MSE, and relative improvement for each of the 42 paired task-dataset records.
 
 The strongest improvements are observed on tasks where the no-training checkpoint has relatively large action prediction error. The remaining residual errors after Baihu training are small in absolute value, but they can still vary across platforms and tasks due to differences in action scale, end-effector representation, and task dynamics.
 
