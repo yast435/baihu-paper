@@ -1,6 +1,6 @@
 \section{Data Processing Pipeline}
 
-Baihu converts heterogeneous robot operation records into a consistent dataset for large-scale policy training. The source trajectories are stored in HDF5 format and are standardized into LeRobot v2.1 for downstream imitation-learning and vision-language-action training. The processing pipeline emphasizes three requirements: preserving embodiment-specific control information, filtering invalid trajectories, and producing a unified representation that can be loaded by modern robot learning systems.
+Baihu converts heterogeneous human-teleoperated robot operation records into a consistent dataset for large-scale policy training. The source trajectories are stored in HDF5 format and are standardized into LeRobot v2.1 for downstream imitation-learning and vision-language-action training. The processing pipeline emphasizes three requirements: preserving embodiment-specific control information, filtering invalid or task-inconsistent trajectories, and producing a unified representation that can be loaded by modern robot learning systems.
 
 \subsection{HDF5 ingestion and trajectory validation}
 
@@ -10,9 +10,11 @@ Because Baihu integrates data from multiple robot platforms, validation is requi
 
 \subsection{Quality control and metadata standardization}
 
-Baihu uses a multi-stage quality control workflow covering data acquisition, monitoring, upload, validation, cleaning, review, and final delivery. This workflow is important at the scale of Baihu because even a small fraction of invalid trajectories can correspond to a large amount of unusable data. Quality control therefore aims to maintain consistency across heterogeneous sources while preserving the diversity needed for embodied model pretraining.
+Baihu uses a multi-stage quality control workflow covering data acquisition, monitoring, upload, validation, cleaning, review, and final delivery. This workflow is important at the scale of Baihu because even a small fraction of invalid trajectories can correspond to a large amount of unusable data. Quality control therefore aims to maintain consistency across heterogeneous platforms while preserving the diversity needed for embodied model pretraining.
 
-Task and episode metadata are standardized to support dataset analysis and model conditioning. Each episode is associated with task information, platform metadata, and source-specific fields when available. These annotations enable analysis by task, platform, and data source, and they also provide the language or semantic conditioning signals used by vision-language-action policies.
+A trajectory is retained only when it satisfies the task request under which it was collected. Trajectories that do not follow the task requester specification are removed from the dataset. Typical removal cases include incorrect scene setup, incorrect objects or tools, wrong manipulation procedure, incomplete task execution, corrupted recordings, missing modality fields, inconsistent task metadata, or misaligned observation-action sequences. As a result, Baihu does not intentionally preserve failed or task-inconsistent demonstrations as training examples in the released corpus.
+
+Task and episode metadata are standardized to support dataset analysis and model conditioning. Each episode is associated with task information, platform metadata, and source-specific fields when available. These annotations enable analysis by task and platform, and they also provide the language or semantic conditioning signals used by vision-language-action policies. Since task annotations are manually provided when collection requirements are proposed, metadata standardization also checks that the recorded trajectory remains consistent with the intended task description.
 
 \subsection{State and action schema alignment}
 
