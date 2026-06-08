@@ -30,15 +30,15 @@ After validation and schema alignment, Baihu is converted from the source HDF5 f
 
 \section{Benchmark Experiments}
 
-To demonstrate the value of Baihu for embodied foundation model training, we evaluate whether a model trained on Baihu improves offline action prediction on unseen tasks across multiple robot platforms. The benchmark focuses on open-loop zero-shot evaluation, where the model predicts actions from recorded observations and the predictions are compared against ground-truth actions in held-out trajectories.
+To demonstrate the value of Baihu for embodied foundation model training, we evaluate whether a model trained on Baihu improves offline action prediction on external evaluation datasets. The datasets used for open-loop evaluation are not part of the Baihu training corpus. The benchmark therefore measures transfer from Baihu pretraining to held-out evaluation trajectories collected separately from Baihu.
 
 \subsection{Offline open-loop zero-shot evaluation}
 
-Open-loop evaluation provides an offline assessment by comparing the model's predicted actions against ground-truth actions from robot demonstration data. In this benchmark, we compare a no-training GR00T N1.6 checkpoint, checkpoint-1, with checkpoint-390000, which was trained on Baihu for one epoch. The evaluation covers \textbf{13 platforms} and \textbf{42 paired task-dataset records}. This setting is designed to measure whether Baihu pretraining improves cross-task offline prediction performance without additional task-specific finetuning on the evaluation tasks.
+Open-loop evaluation provides an offline assessment by comparing the model's predicted actions against reference actions from human-teleoperated robot demonstrations. In this benchmark, we compare a no-training GR00T N1.6 checkpoint, checkpoint-1, with checkpoint-390000, which was trained on Baihu for one epoch. The evaluation covers \textbf{13 platforms} and \textbf{42 paired task-dataset records} drawn from datasets that are external to Baihu and excluded from Baihu training. No additional finetuning is performed on these evaluation datasets. We therefore use zero-shot to denote dataset-level transfer from Baihu pretraining to external held-out evaluation data.
 
 \subsection{Evaluation metrics}
 
-The benchmark reports two mean squared error metrics. For each trajectory, the policy predicts an action sequence from the recorded observations. The predicted action values are compared with the corresponding demonstration actions from the dataset. For a selected set of action dimensions and evaluated timesteps, MSE is the average squared difference between the predicted action and the dataset action.
+The benchmark reports two mean squared error metrics. For each trajectory, the policy predicts an action sequence from the recorded observations. The predicted action values are compared with the corresponding demonstration actions from the evaluation dataset. For a selected set of action dimensions and evaluated timesteps, MSE is the average squared difference between the predicted action and the dataset action.
 
 \textbf{ALL MSE} is used as the primary evaluation metric because it computes the error over all action dimensions available in the dataset. This metric reflects the model's full action prediction error, including arm, gripper, hand, or other action dimensions when they are present.
 
@@ -48,9 +48,9 @@ For each task-dataset record, MSE is averaged over the evaluated trajectory step
 
 \subsection{Overall results}
 
-The benchmark results show that one epoch of training on Baihu substantially reduces offline open-loop prediction error across the 13 evaluated platforms and 42 paired task-dataset records. At the aggregate level, the Baihu-trained checkpoint reduces ALL MSE from 0.157283 to 0.005051, corresponding to a \textbf{96.79\%} relative improvement. It also reduces Joint MSE from 0.116746 to 0.000680, corresponding to a \textbf{99.42\%} relative improvement. The detailed per-platform results are reported in Table~\ref{tab:per-platform}.
+The benchmark results show that one epoch of training on Baihu substantially reduces offline open-loop prediction error across the 13 evaluated platforms and 42 external paired task-dataset records. At the aggregate level, the Baihu-trained checkpoint reduces ALL MSE from 0.157283 to 0.005051, corresponding to a \textbf{96.79\%} relative improvement. It also reduces Joint MSE from 0.116746 to 0.000680, corresponding to a \textbf{99.42\%} relative improvement. The detailed per-platform results are reported in Table~\ref{tab:per-platform}.
 
-This indicates that Baihu provides effective supervision for improving full-vector action prediction while also improving joint-related action prediction across a broad set of unseen task-dataset records.
+This indicates that Baihu provides effective supervision for improving full-vector and joint-related action prediction on evaluation data that were not included in the Baihu training corpus.
 
 \subsection{Per-platform results}
 
@@ -58,7 +58,7 @@ Because Baihu is a multi-embodiment dataset, aggregate metrics alone are insuffi
 
 \begin{table}[t]
 \centering
-\caption{Per-platform offline zero-shot evaluation results. The table reports the unweighted mean over paired task-dataset records for each evaluated platform. Lower MSE is better.}
+\caption{Per-platform offline zero-shot evaluation results on datasets external to Baihu. The table reports the unweighted mean over paired task-dataset records for each evaluated platform. Lower MSE is better.}
 \label{tab:per-platform}
 \footnotesize
 \setlength{\tabcolsep}{3pt}
@@ -90,12 +90,12 @@ The per-platform results show consistent improvement across all evaluated robot 
 
 \subsection{Task-level analysis}
 
-Task-level results further show that Baihu training improves offline prediction across the 42 paired task-dataset records. Task-level reporting is especially useful because different platforms may have different action spaces, control frequencies, and gripper or hand dimensions.
+Task-level results further show that Baihu training improves offline prediction across the 42 external paired task-dataset records. Task-level reporting is especially useful because different platforms may have different action spaces, control frequencies, and gripper or hand dimensions.
 
 Table~\ref{tab:task-level} reports ALL MSE, Joint MSE, and relative improvement for each of the 42 paired task-dataset records. The full task-level table is provided in Appendix~\ref{app:task-level}.
 
-The strongest improvements are observed on tasks where the no-training checkpoint has relatively large action prediction error. The remaining residual errors after Baihu training are small in absolute value, but they can still vary across platforms and tasks due to differences in action scale, end-effector representation, and task dynamics.
+The strongest improvements are observed on records where the no-training checkpoint has relatively large action prediction error. The remaining residual errors after Baihu training are small in absolute value, but they can still vary across platforms and tasks due to differences in action scale, end-effector representation, and task dynamics.
 
 \subsection{Additional benchmark extensions}
 
-The current benchmark already provides a useful offline zero-shot comparison. Future versions can extend the benchmark with data-scaling evaluation, held-out platform evaluation, closed-loop simulation evaluation, and real-world rollout success rate.
+The current benchmark provides a dataset-level held-out offline zero-shot comparison. Future versions can extend the benchmark with data-scaling evaluation, held-out platform evaluation, closed-loop simulation evaluation, and real-world rollout success rate.
