@@ -96,19 +96,6 @@ Compared with prior datasets, Baihu is positioned as a billion-frame, multi-embo
 
 \subsection{Dataset scale}
 
-Baihu provides a large-scale robot data foundation for embodied model pretraining. It contains \textbf{9521.75 hours} of robot manipulation data, \textbf{2989 tasks}, \textbf{513575 episodes}, and \textbf{1028349814 frames} across \textbf{13 robot platforms}. These statistics are summarized in Table~\ref{tab:scale-stats}.
-
-\begin{table}[t]
-\centering
-\caption{Baihu dataset scale. The table reports the total duration, task count, episode count, and frame count of the dataset.}
-\label{tab:scale-stats}
-\begin{tabular}{lrrrr}
-\toprule
-Dataset & Hours & Tasks & Episodes & Frames \\
-\midrule
-\textbf{Baihu} & \textbf{9521.75} & \textbf{2989} & \textbf{513575} & \textbf{1028349814} \\
-\bottomrule
-\end{tabular}
-\end{table}
+Baihu provides a large-scale robot data foundation for embodied model pretraining. It contains \textbf{9521.75 hours} of robot manipulation data, \textbf{2989 tasks}, \textbf{513575 episodes}, and \textbf{1028349814 frames} across \textbf{13 robot platforms}.
 
 This scale makes Baihu suitable for large-scale pretraining of robot policies, rather than only task-specific imitation learning. Based on the total frame count and total duration, Baihu has an average recording rate of approximately 30 frames per second. Each episode contains approximately 2002 frames on average, corresponding to about 66.7 seconds per episode.
