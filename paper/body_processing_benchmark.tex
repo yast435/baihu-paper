@@ -46,7 +46,7 @@ For each task-dataset record, MSE is averaged over the evaluated trajectory step
 
 \subsection{Overall results}
 
-The benchmark results show that one epoch of training on Baihu substantially reduces offline open-loop prediction error across the 13 evaluated platforms and 42 paired task-dataset records. The overall result is summarized in Table~\ref{tab:overall-results} and visualized in Figure~\ref{fig:benchmark-results}.
+The benchmark results show that one epoch of training on Baihu substantially reduces offline open-loop prediction error across the 13 evaluated platforms and 42 paired task-dataset records. At the aggregate level, the Baihu-trained checkpoint reduces ALL MSE from 0.157283 to 0.005051, corresponding to a \textbf{96.79\%} relative improvement. It also reduces Joint MSE from 0.116746 to 0.000680, corresponding to a \textbf{99.42\%} relative improvement. These aggregate results are visualized in Figure~\ref{fig:benchmark-results}, while the detailed per-platform results are reported in Table~\ref{tab:per-platform}.
 
 \begin{figure}[t]
   \centering
@@ -58,22 +58,7 @@ The benchmark results show that one epoch of training on Baihu substantially red
   \label{fig:benchmark-results}
 \end{figure}
 
-\begin{table}[t]
-\centering
-\caption{Overall offline zero-shot open-loop evaluation results. The table reports the unweighted mean over 42 paired task-dataset records. Lower MSE is better.}
-\label{tab:overall-results}
-\begin{tabular}{lrr}
-\toprule
-Model checkpoint & ALL MSE $\downarrow$ & Joint MSE $\downarrow$ \\
-\midrule
-checkpoint-1 (no training) & 0.157283 & 0.116746 \\
-checkpoint-390000 (Baihu, 1 epoch) & 0.005051 & 0.000680 \\
-Relative improvement & 96.79\% & 99.42\% \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-Compared with the no-training checkpoint-1 baseline, the Baihu-trained checkpoint reduces ALL MSE by \textbf{96.79\%} and Joint MSE by \textbf{99.42\%}. This indicates that Baihu provides effective supervision for improving full-vector action prediction while also improving joint-related action prediction across a broad set of unseen task-dataset records.
+This indicates that Baihu provides effective supervision for improving full-vector action prediction while also improving joint-related action prediction across a broad set of unseen task-dataset records.
 
 \subsection{Per-platform results}
 
