@@ -8,9 +8,10 @@ This repository tracks the LaTeX draft and supporting materials for the Baihu da
 
 ## Current paper direction
 
-The current paper focuses on Baihu as a large-scale, multi-platform robot manipulation dataset for embodied foundation model pretraining and evaluation. The draft emphasizes:
+The current paper positions Baihu as a large-scale, fully human-teleoperated, LeRobot v2.1-standardized, multi-platform robot manipulation dataset for embodied foundation model pretraining and evaluation. The draft emphasizes:
 
 - billion-frame robot pretraining data;
+- fully human-teleoperated trajectories collected on physical robot platforms;
 - multi-platform robot manipulation data coverage;
 - task, scenario, and skill-level dataset characterization;
 - HDF5-to-LeRobot v2.1 data standardization;
@@ -22,7 +23,7 @@ The current paper focuses on Baihu as a large-scale, multi-platform robot manipu
 paper/
   main.tex                         # Main LaTeX entry point
   body_main.tex                    # Abstract, introduction, related work, and dataset scale
-  body_dataset_rest.tex            # Skill taxonomy, platform composition, scenarios, objects, and data format
+  body_dataset_rest.tex            # Data collection protocol, skill taxonomy, platform composition, scenarios, objects, and data format
   body_processing_benchmark.tex    # Data processing pipeline and benchmark experiments
   body_discussion.tex              # Discussion and limitations
   body_conclusion.tex              # Conclusion
@@ -47,6 +48,7 @@ paper/main.tex
 
 - Primary dataset version: `BAIHU_v2.0`
 - Status: completed
+- Collection protocol: fully human teleoperation on physical robot platforms
 - Duration: 9521.75 hours
 - Tasks: 2989
 - Episodes: 513575
@@ -70,10 +72,9 @@ paper/main.tex
 
 The final paper should still verify or refine:
 
-1. the final data-source description for Baihu v2.0;
-2. detailed platform descriptions for the 13 robot platforms;
-3. dataset split definitions and release/access policy;
-4. data quality control rules and filtering statistics;
-5. formal citations and BibTeX entries for related datasets and model/tooling dependencies;
-6. final figure/table captions and target submission formatting;
-7. whether additional closed-loop, held-out-platform, or data-scaling experiments will be added.
+1. detailed platform descriptions for the 13 robot platforms;
+2. dataset split definitions and release/access policy;
+3. data quality control rules and filtering statistics;
+4. formal citations and BibTeX entries for related datasets and model/tooling dependencies;
+5. final figure/table captions and target submission formatting;
+6. whether additional closed-loop, held-out-platform, or data-scaling experiments will be added.
