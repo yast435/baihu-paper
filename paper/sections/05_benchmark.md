@@ -25,7 +25,7 @@ For each task-dataset record, MSE is averaged over the evaluated trajectory step
 
 ## 5.3 Overall results
 
-The benchmark results show that one epoch of training on BAIHU_v2.0 substantially reduces offline open-loop prediction error across the 13 evaluated platforms and 42 paired task-dataset records. The overall result is summarized in **Table 3** and visualized in **Figure 3**.
+The benchmark results show that one epoch of training on BAIHU_v2.0 substantially reduces offline open-loop prediction error across the 13 evaluated platforms and 42 paired task-dataset records. The overall result is summarized in **Table 3**.
 
 **Table 3. Overall offline zero-shot open-loop evaluation results.** The table reports the unweighted mean over 42 paired task-dataset records. Lower MSE is better.
 
