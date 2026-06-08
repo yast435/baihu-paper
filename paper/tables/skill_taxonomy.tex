@@ -1,0 +1,28 @@
+% Baihu v2.0 skill taxonomy table generated from materials/技能.csv.
+% Required packages: booktabs, tabularx, adjustbox.
+
+\begin{table}[t]
+\centering
+\caption{Skill taxonomy of Baihu v2.0. The 64 manipulation skills are grouped according to their action semantics during data collection and annotation.}
+\label{tab:skill-taxonomy}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabularx}{\textwidth}{p{0.30\textwidth}p{0.08\textwidth}X}
+\toprule
+Category & Count & Skills \\
+\midrule
+Object acquisition and release & 9 & Grasp, Pick, Pick up, Pinch, Suction, Hold, Lift, Lower, Release \\
+Transport, placement, and handover & 10 & Move, Place, Carry, Transfer, HandOver, TakeOver, Throw, Discard, Takeout, Remove \\
+Spatial arrangement and organization & 8 & Alignment, Adjust, Straighten, Stack, Unstack, Pack, Ensure, Several Times \\
+Articulated, container, and electrical interaction & 11 & Open, Close, OpenBox, CloseBox, DrawOut, Insert, Plug, Unplug, PressButton, Zip, Unzip \\
+Contact-based motion primitives & 9 & Push, Pull, Press, Rotate, Flip, Stretch, Touch, Swipe, Shake \\
+Tool, fluid, and material manipulation & 10 & Pour, Scoop, Wipe, Water, Brush, Stir, Stick, Tear, Fold, Unfold \\
+Navigation, perception, and expressive actions & 7 & Navigate, Point, Scan, Check, Hang, Armretract, Wave \\
+\midrule
+\textbf{Total} & \textbf{64} & -- \\
+\bottomrule
+\end{tabularx}
+\end{adjustbox}
+\end{table}
