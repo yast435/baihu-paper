@@ -36,6 +36,12 @@ To demonstrate the value of Baihu for embodied foundation model training, we eva
 
 Open-loop evaluation provides an offline assessment by comparing the model's predicted actions against reference actions from human-teleoperated robot demonstrations. In this benchmark, we compare a no-training GR00T N1.6 checkpoint, checkpoint-1, with checkpoint-390000, which was trained on Baihu for one epoch. The evaluation covers \textbf{13 platforms} and \textbf{42 paired task-dataset records} drawn from datasets that are external to Baihu and excluded from Baihu training. No additional finetuning is performed on these evaluation datasets. We therefore use zero-shot to denote dataset-level transfer from Baihu pretraining to external held-out evaluation data.
 
+\subsection{Evaluation protocol}
+
+For each task-dataset record, five trajectories are selected from the corresponding external evaluation dataset. The model predicts actions from the recorded observations of each trajectory, and the prediction error is measured against the associated human-teleoperation actions. The task-level result is obtained by averaging the trajectory-level MSE values over the five trajectories. Both checkpoints are evaluated on the same trajectories, providing a paired comparison between the no-training baseline and the Baihu-trained model.
+
+Per-platform results are computed as the unweighted mean over the task-dataset records associated with each platform. The overall benchmark result is then reported as the unweighted mean across all 42 paired task-dataset records. This evaluation design gives each task-dataset record equal weight, independent of the amount of data available for a particular platform or task.
+
 \subsection{Evaluation metrics}
 
 The benchmark reports two mean squared error metrics. For each trajectory, the policy predicts an action sequence from the recorded observations. The predicted action values are compared with the corresponding demonstration actions from the evaluation dataset. For a selected set of action dimensions and evaluated timesteps, MSE is the average squared difference between the predicted action and the dataset action.
@@ -43,8 +49,6 @@ The benchmark reports two mean squared error metrics. For each trajectory, the p
 \textbf{ALL MSE} is used as the primary evaluation metric because it computes the error over all action dimensions available in the dataset. This metric reflects the model's full action prediction error, including arm, gripper, hand, or other action dimensions when they are present.
 
 \textbf{Joint MSE} is reported as an auxiliary diagnostic metric. It computes the error using only joint-related action dimensions and excludes gripper or hand dimensions. This metric is useful because hand and gripper dimensions may have different scales, semantics, or sparsity patterns across platforms, and may otherwise dominate or distort the full action prediction error.
-
-For each task-dataset record, MSE is averaged over the evaluated trajectory steps and selected action dimensions. Aggregate results are then reported as the unweighted mean across the 42 paired task-dataset records unless otherwise specified.
 
 \subsection{Overall results}
 
