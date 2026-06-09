@@ -47,6 +47,14 @@ Agibot A2 & 119 & 34675 & 69847611 & 646.74 \\
 
 The platform composition in Table~\ref{tab:platform-comp} shows that Baihu integrates human-teleoperated robot data from multiple platforms with different embodiments, control interfaces, sensor configurations, and task settings. This coverage supports unified data standardization and cross-platform model evaluation while preserving platform-specific state and action schemas.
 
+\subsection{Robot configurations and visual coverage}
+
+The 13 platforms also differ substantially in robot morphology, end-effector design, and recorded visual configuration. As summarized in Table~\ref{tab:robot-config}, Baihu includes fixed-base bimanual manipulators, wheeled or mobile bimanual manipulators, and humanoid robots. Most platforms use grippers, while Fourier GR-2 and Agibot A2 use dexterous hands. The recorded camera configurations range from two to four views and include head, wrist, torso, chest, and high-view perspectives.
+
+\input{tables/robot_configuration}
+
+This diversity extends beyond platform count and exposes learning systems to different physical embodiments, manipulation interfaces, and visual observation layouts. It also motivates the use of platform-specific modality schemas within the shared LeRobot v2.1 representation.
+
 \subsection{Scenario and task coverage}
 
 Beyond scale and embodiment diversity, Baihu is designed to cover a broad range of manipulation scenarios and task structures. The dataset is organized into five major scenario categories: household service, retail and pharmacy, catering service, industrial manufacturing, and other general-purpose scenarios. Table~\ref{tab:scenario-coverage} summarizes the task count in each scenario category.
