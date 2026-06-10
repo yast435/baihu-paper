@@ -87,9 +87,14 @@ The dataset also includes different interaction patterns between robots and obje
 
 \subsection{Temporal diversity}
 
-Baihu contains tasks spanning a broad range of temporal durations. For each of the 2989 tasks, we compute the mean trajectory duration over all trajectories associated with that task and group tasks according to this value. As shown in Table~\ref{tab:task-duration}, 40.55\% of tasks have a mean trajectory duration below 60 seconds, 74.94\% are below 180 seconds, and 92.17\% are below 300 seconds. Meanwhile, 7.83\% of tasks exceed 300 seconds, including 1.27\% with mean durations of at least 600 seconds. The median task lies within the 60--90 second interval.
+Baihu contains tasks spanning a broad range of temporal durations. For each of the 2989 tasks, we compute the mean trajectory duration over all trajectories associated with that task and group tasks according to this value. As shown in Figure~\ref{fig:task-duration}, 40.55\% of tasks have a mean trajectory duration below 60 seconds, 74.94\% are below 180 seconds, and 92.17\% are below 300 seconds. Meanwhile, 7.83\% of tasks exceed 300 seconds, including 1.27\% with mean durations of at least 600 seconds. The median task lies within the 60--90 second interval.
 
-\input{tables/task_duration_distribution}
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.90\textwidth]{figures/task_duration_distribution.jpg}
+\caption{Distribution of task-level mean trajectory duration in Baihu. For each task, the duration is averaged over all trajectories associated with that task.}
+\label{fig:task-duration}
+\end{figure}
 
 This distribution shows that Baihu covers both short local manipulation behaviors and extended multi-stage interactions. Duration alone does not fully characterize task complexity, but it provides a quantitative view of the temporal diversity represented in the dataset.
 
