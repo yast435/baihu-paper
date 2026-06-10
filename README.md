@@ -13,7 +13,7 @@ The current paper positions Baihu as a large-scale, fully human-teleoperated, Le
 - billion-frame robot pretraining data;
 - fully human-teleoperated trajectories collected on physical robot platforms;
 - multi-platform robot manipulation data coverage;
-- task, scenario, and skill-level dataset characterization;
+- task, scenario, skill, robot-category, end-effector, and camera-configuration characterization;
 - HDF5-to-LeRobot v2.1 data standardization;
 - offline open-loop zero-shot benchmark evaluation with GR00T N1.6.
 
@@ -23,12 +23,12 @@ The current paper positions Baihu as a large-scale, fully human-teleoperated, Le
 paper/
   main.tex                         # Main LaTeX entry point
   body_main.tex                    # Abstract, introduction, related work, and dataset scale
-  body_dataset_rest.tex            # Data collection protocol, skill taxonomy, platform composition, scenarios, objects, and data format
+  body_dataset_rest.tex            # Data collection protocol, skill taxonomy, platform composition, robot configurations, scenarios, objects, and data format
   body_processing_benchmark.tex    # Data processing pipeline and benchmark experiments
   body_discussion.tex              # Discussion and limitations
   body_conclusion.tex              # Conclusion
   references.bib                   # Bibliography entries
-  tables/                          # Dataset, skill taxonomy, platform, and benchmark tables
+  tables/                          # Dataset, skill taxonomy, robot configuration, platform, and benchmark tables
 
 materials/                         # Source materials and experiment records
 notes/                             # Notes and remaining tasks
@@ -65,14 +65,14 @@ paper/main.tex
 - Baihu-trained checkpoint: `checkpoint-390000` complete 1-epoch checkpoint trained on `BAIHU_v2.0`
 - Evaluation type: offline open-loop zero-shot evaluation
 - Evaluation scope: 13 platforms and 42 paired task-dataset records
-- Overall ALL MSE reduction: 96.79%
-- Overall Joint MSE reduction: 99.42%
+- Overall Normalized ALL MSE reduction: 96.79%
+- Overall Normalized Joint MSE reduction: 99.42%
 
 ## Important open issues
 
 The final paper should still verify or refine:
 
-1. detailed platform descriptions for the 13 robot platforms;
+1. final platform naming and hardware-description consistency;
 2. dataset split definitions and release/access policy;
 3. data quality control rules and filtering statistics;
 4. formal citations and BibTeX entries for related datasets and model/tooling dependencies;
