@@ -1,6 +1,6 @@
 \subsection{Data collection protocol}
 
-All trajectories in Baihu are collected through human teleoperation. The dataset does not include scripted robot rollouts, simulation trajectories, or internet-sourced robot videos. Each episode records a human operator controlling a physical robot platform to complete a requested manipulation task under a specified scene setup.
+All trajectories in Baihu are collected through human teleoperation. Human teleoperation is a widely used approach for collecting action-labeled robot demonstrations for imitation learning in fixed-base, bimanual, in-the-wild, and mobile manipulation settings~\cite{mandlekar2018roboturk,sharma2018mime,zhao2023aloha,fu2024mobilealoha,khazatsky2024droid}. The dataset does not include scripted robot rollouts, simulation trajectories, or internet-sourced robot videos. Each episode records a human operator controlling a physical robot platform to complete a requested manipulation task under a specified scene setup.
 
 Task annotations are provided manually by the task requester when the collection requirement is proposed. The task label or instruction therefore reflects the intended task specification before data collection, rather than being generated automatically from the robot logs after collection. The task description defines the expected scene setup, objects or tools, target state, and manipulation procedure for each collection requirement.
 
