@@ -36,7 +36,7 @@ To demonstrate the value of Baihu for embodied foundation model training, we eva
 
 \subsection{Offline open-loop zero-shot evaluation}
 
-Open-loop evaluation provides an offline assessment by comparing the model's predicted actions against reference actions from human-teleoperated robot demonstrations. In this benchmark, we compare a no-training GR00T N1.6 checkpoint, checkpoint-1, with checkpoint-390000, which was trained on Baihu for one epoch. The evaluation covers \textbf{13 platforms} and \textbf{42 paired task-dataset records} drawn from datasets that are external to Baihu and excluded from Baihu training. No additional finetuning is performed on these evaluation datasets. We therefore use zero-shot to denote dataset-level transfer from Baihu pretraining to external held-out evaluation data.
+Open-loop evaluation provides an offline assessment by comparing the model's predicted actions against reference actions from human-teleoperated robot demonstrations. In this benchmark, we compare a no-training GR00T N1.6 checkpoint~\cite{nvidia2025grootn1}, checkpoint-1, with checkpoint-390000, which was trained on Baihu for one epoch. The evaluation covers \textbf{13 platforms} and \textbf{42 paired task-dataset records} drawn from datasets that are external to Baihu and excluded from Baihu training. No additional finetuning is performed on these evaluation datasets. We therefore use zero-shot to denote dataset-level transfer from Baihu pretraining to external held-out evaluation data.
 
 \subsection{Evaluation protocol}
 
@@ -90,7 +90,7 @@ Because Baihu is a multi-embodiment dataset, aggregate metrics alone are insuffi
 Platform & N & ALL-1 & ALL-Baihu & $\Delta$ALL & Joint-1 & Joint-Baihu & $\Delta$Joint \\
 \midrule
 QingLong & 6 & 0.180542 & 0.002733 & 98.49\% & 0.157132 & 0.000572 & 99.64\% \\
-Agibot A2 & 3 & 0.225461 & 0.007562 & 96.65\% & 0.132757 & 0.000896 & 99.33\% \\
+AGIBOT A2 & 3 & 0.225461 & 0.007562 & 96.65\% & 0.132757 & 0.000896 & 99.33\% \\
 Fourier GR-2 & 3 & 0.233863 & 0.003824 & 98.36\% & 0.137993 & 0.001805 & 98.69\% \\
 Galaxea R1 & 3 & 0.117581 & 0.004864 & 95.86\% & 0.075369 & 0.000197 & 99.74\% \\
 Leju KUAVO & 3 & 0.157261 & 0.004335 & 97.24\% & 0.133456 & 0.000743 & 99.44\% \\
