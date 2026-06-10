@@ -29,48 +29,33 @@ The main contributions of this work are as follows:
 
 \subsection{Large-scale robot manipulation datasets}
 
-Large-scale robot manipulation datasets have become a central resource for training generalist robot policies. Recent datasets differ in their collection setting, robot coverage, task diversity, and degree of standardization. RoboMIND focuses on multi-embodiment manipulation data and benchmark evaluation, providing 107k demonstration trajectories across 479 tasks and 96 object classes~\cite{wu2024robomind}. DROID emphasizes in-the-wild real-world robot data, collecting 76k trajectories, 350 hours of data, and manipulation demonstrations across many scenes~\cite{khazatsky2024droid}. BridgeData V2 provides 60,096 trajectories across 24 environments and supports goal-image and language-conditioned manipulation learning~\cite{walke2023bridgedatav2}. Open X-Embodiment aggregates robot data across many institutions and robots to study cross-embodiment learning at scale~\cite{oneill2023openx}.
+Large-scale robot manipulation datasets have become a central resource for training generalist robot policies. Recent datasets differ in their collection setting, robot coverage, task diversity, and degree of standardization. RoboMIND focuses on multi-embodiment manipulation data and benchmark evaluation, providing 107k demonstration trajectories across 479 tasks and 96 object classes~\cite{wu2024robomind}. DROID emphasizes in-the-wild real-world robot data, collecting 76k trajectories, 350 hours of data, and manipulation demonstrations across 564 scenes and 84 tasks~\cite{khazatsky2024droid}. BridgeData V2 provides 60,096 trajectories across 24 environments on a publicly available low-cost robot~\cite{walke2023bridgedatav2}. Open X-Embodiment aggregates data from 22 robots across 21 institutions to study cross-embodiment learning at scale~\cite{oneill2023openx}.
 
 Baihu follows the same broad direction of building large-scale robot data for embodied intelligence, but differs in its focus on pretraining-scale fully human-teleoperated dataset construction, structured data management, broad robot morphology and control-space coverage, and HDF5-to-LeRobot v2.1 standardization. Baihu contains 9521.75 hours of robot data, 2989 tasks, 513575 episodes, and 1028349814 frames. This makes Baihu not only a task collection, but a large-scale data foundation for embodied foundation model pretraining.
 
 \begin{table}[t]
 \centering
-\caption{Comparison with representative robot manipulation datasets. The table reports trajectory or episode count, task count, and skill count when available. Prior dataset statistics follow RoboMIND Table I~\cite{wu2024robomind}.}
+\caption{Comparison with representative large-scale robot manipulation datasets. ``n/r'' indicates that the corresponding statistic is not reported as a primary dataset-level quantity in the cited paper. Task definitions follow the conventions of each source and are therefore not perfectly interchangeable.}
 \label{tab:dataset-comparison}
 \footnotesize
-\setlength{\tabcolsep}{5pt}
+\setlength{\tabcolsep}{4pt}
 \renewcommand{\arraystretch}{1.08}
-\begin{adjustbox}{max width=0.95\textwidth}
-\begin{tabular}{lrrr}
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{lrrrrl}
 \toprule
-Dataset & Traj. / Ep. & Tasks & Skills \\
+Dataset & Traj. / Ep. & Hours & Platforms & Tasks & Collection \\
 \midrule
-Pinto and Gupta~\cite{pinto2016supersizing} & 50k & n/a & 1 \\
-Home-LCA~\cite{gupta2018robot} & 28k & n/a & 1 \\
-BrainRobotData~\cite{levine2018learning} & 800k & n/a & 1 \\
-RoboTurk~\cite{mandlekar2018roboturk} & 2.1k & 3 & 2 \\
-MIME~\cite{sharma2018mime} & 8.2k & 20 & 20 \\
-Sketchy~\cite{cabi2020scaling} & 74.4k & 5 & n/a \\
-RoboNet~\cite{dasari2020robonet} & 162k & n/a & n/a \\
-BridgeData~\cite{ebert2022bridge} & 7.2k & 71 & 4 \\
-MT-Opt~\cite{kalashnikov2021mtopt} & 800k & 12 & 1 \\
-RT-1~\cite{brohan2023rt1} & 130k & 700 & 8 \\
-BC-Z~\cite{jang2022bcz} & 26k & 100 & 3 \\
-BridgeData V2~\cite{walke2023bridgedatav2} & 60.1k & n/a & 13 \\
-RoboSet~\cite{bharadhwaj2024roboagent} & 98.5k & 38 & 6 \\
-RH20T~\cite{fang2024rh20t} & 13k & 140 & 33 \\
-DROID~\cite{khazatsky2024droid} & 76k & n/a & 86 \\
-BRMData~\cite{zhang2024brmdata} & 0.5k & 10 & 7 \\
-Dobb-E~\cite{shafiullah2023dobbe} & 5.6k & 109 & 6 \\
-Open X-Embodiment~\cite{oneill2023openx} & 1.4M & 160k & 217 \\
-RoboMIND~\cite{wu2024robomind} & 107k & 479 & 38 \\
-\textbf{Baihu} & \textbf{513.6k} & \textbf{2989} & \textbf{64} \\
+BridgeData V2~\cite{walke2023bridgedatav2} & 60.1k & n/r & 1 & n/r & Human + scripted \\
+DROID~\cite{khazatsky2024droid} & 76k & 350 & 1 & 84 & Human teleoperation \\
+RoboMIND~\cite{wu2024robomind} & 107k & n/r & 4 & 479 & Human teleoperation \\
+Open X-Embodiment~\cite{oneill2023openx} & $>1$M & n/r & 22 & 160266 & Aggregated datasets \\
+\textbf{Baihu} & \textbf{513.6k} & \textbf{9521.75} & \textbf{13} & \textbf{2989} & \textbf{Fully human teleoperation} \\
 \bottomrule
 \end{tabular}
 \end{adjustbox}
 \end{table}
 
-Table~\ref{tab:dataset-comparison} highlights Baihu's scale in terms of episode count, task coverage, and skill diversity. Baihu contains 513,575 episodes, 2989 tasks, and 64 manipulation skills.
+Table~\ref{tab:dataset-comparison} highlights the combination of properties that distinguishes Baihu. Relative to single-platform datasets such as BridgeData V2 and DROID, Baihu provides substantially broader embodiment coverage. Relative to RoboMIND, Baihu contains more trajectories, tasks, and physical robot platforms. Open X-Embodiment covers more robot embodiments and aggregates a larger overall trajectory corpus, but it is assembled from heterogeneous datasets collected across many institutions. Baihu instead provides a coherently organized corpus of fully human-teleoperated demonstrations across 13 physical platforms, standardized into LeRobot v2.1. The contribution of Baihu therefore lies in the joint combination of scale, human demonstration, embodiment diversity, standardized organization, and external model-oriented evaluation rather than in any single maximum statistic.
 
 \subsection{Multi-embodiment robot learning}
 
