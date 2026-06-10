@@ -69,45 +69,22 @@ where $a_{t,d}$ and $\hat{a}_{t,d}$ denote the reference and predicted action va
 
 \subsection{Overall results}
 
-The benchmark results show that one epoch of training on Baihu substantially reduces normalized offline open-loop prediction error across the 13 evaluated platforms and 42 external paired task-dataset records. At the aggregate level, the Baihu-trained checkpoint reduces Normalized ALL MSE from 0.157283 to 0.005051, corresponding to a \textbf{96.79\%} relative improvement. It also reduces Normalized Joint MSE from 0.116746 to 0.000680, corresponding to a \textbf{99.42\%} relative improvement. The detailed per-platform results are reported in Table~\ref{tab:per-platform}.
+The benchmark results show that one epoch of training on Baihu substantially reduces normalized offline open-loop prediction error across the 13 evaluated platforms and 42 external paired task-dataset records. At the aggregate level, the Baihu-trained checkpoint reduces Normalized ALL MSE from 0.157283 to 0.005051, corresponding to a \textbf{96.79\%} relative improvement. It also reduces Normalized Joint MSE from 0.116746 to 0.000680, corresponding to a \textbf{99.42\%} relative improvement. The per-platform comparisons are visualized in Fig.~\ref{fig:per-platform-zero-shot}.
 
 This indicates that Baihu provides effective supervision for improving full-vector and joint-related action prediction on evaluation data that were not included in the Baihu training corpus.
 
 \subsection{Per-platform results}
 
-Because Baihu is a multi-embodiment dataset, aggregate metrics alone are insufficient. We therefore also report per-platform results. Across all 13 evaluated platforms, the Baihu-trained checkpoint achieves lower Normalized ALL MSE and Normalized Joint MSE than the no-training baseline.
+Because Baihu is a multi-embodiment dataset, aggregate metrics alone are insufficient. We therefore also analyze the results separately for each evaluated platform. Across all 13 platforms, the Baihu-trained checkpoint achieves lower Normalized ALL MSE and Normalized Joint MSE than the no-training baseline.
 
-\begin{table}[t]
+\begin{figure}[t]
 \centering
-\caption{Per-platform offline zero-shot evaluation results on datasets external to Baihu. All values are normalized MSE, and the table reports the unweighted mean over paired task-dataset records for each evaluated platform. Lower is better.}
-\label{tab:per-platform}
-\footnotesize
-\setlength{\tabcolsep}{3pt}
-\renewcommand{\arraystretch}{1.08}
-\begin{adjustbox}{max width=\textwidth}
-\begin{tabular}{lrrrrrrr}
-\toprule
-Platform & N & ALL-1 & ALL-Baihu & $\Delta$ALL & Joint-1 & Joint-Baihu & $\Delta$Joint \\
-\midrule
-QingLong & 6 & 0.180542 & 0.002733 & 98.49\% & 0.157132 & 0.000572 & 99.64\% \\
-AGIBOT A2 & 3 & 0.225461 & 0.007562 & 96.65\% & 0.132757 & 0.000896 & 99.33\% \\
-Fourier GR-2 & 3 & 0.233863 & 0.003824 & 98.36\% & 0.137993 & 0.001805 & 98.69\% \\
-Galaxea R1 & 3 & 0.117581 & 0.004864 & 95.86\% & 0.075369 & 0.000197 & 99.74\% \\
-Leju KUAVO & 3 & 0.157261 & 0.004335 & 97.24\% & 0.133456 & 0.000743 & 99.44\% \\
-Agilex Cobot Magic & 3 & 0.156535 & 0.002307 & 98.53\% & 0.133968 & 0.000949 & 99.29\% \\
-Franka & 3 & 0.077804 & 0.004525 & 94.18\% & 0.041619 & 0.000711 & 98.29\% \\
-Astribot S1 & 3 & 0.158673 & 0.005819 & 96.33\% & 0.135078 & 0.000822 & 99.39\% \\
-UR5e & 3 & 0.083854 & 0.007897 & 90.58\% & 0.062389 & 0.000068 & 99.89\% \\
-ARX-Loong & 3 & 0.161330 & 0.001803 & 98.88\% & 0.138172 & 0.001076 & 99.22\% \\
-Tianji & 3 & 0.096915 & 0.002092 & 97.84\% & 0.017828 & 0.000612 & 96.57\% \\
-D-Wheel & 3 & 0.203833 & 0.005157 & 97.47\% & 0.176382 & 0.000208 & 99.88\% \\
-AGIBOT G1 & 3 & 0.167769 & 0.015057 & 91.02\% & 0.135167 & 0.000282 & 99.79\% \\
-\bottomrule
-\end{tabular}
-\end{adjustbox}
-\end{table}
+\includegraphics[width=\textwidth]{figures/per_platform_zero_shot_dumbbell.jpg}
+\caption{Per-platform offline zero-shot evaluation on datasets external to Baihu. Each row compares the no-training GR00T N1.6 checkpoint (checkpoint-1) with the checkpoint trained on Baihu for one epoch (checkpoint-390000) for Normalized ALL MSE and Normalized Joint MSE. Connected markers show the change after Baihu training; lower is better. Each platform value is the unweighted mean over its paired task-dataset records. QingLong contains six records, while each of the remaining platforms contains three.}
+\label{fig:per-platform-zero-shot}
+\end{figure}
 
-The per-platform results show consistent improvement across all evaluated robot platforms, suggesting that the pretraining effect is not limited to a single platform. This is important for Baihu because the dataset is explicitly designed as a multi-embodiment training corpus. Here, ALL-1 and Joint-1 denote the no-training checkpoint, ALL-Baihu and Joint-Baihu denote the Baihu-trained checkpoint, and $\Delta$ denotes relative improvement.
+Figure~\ref{fig:per-platform-zero-shot} shows that the improvement is consistent rather than being driven by a small subset of embodiments. Relative reductions range from 90.58\% to 98.88\% for Normalized ALL MSE and from 96.57\% to 99.89\% for Normalized Joint MSE. Joint prediction improves particularly uniformly across platforms, whereas the remaining ALL MSE varies more because it additionally includes platform-specific end-effector dimensions such as grippers and dexterous hands. These results support the use of Baihu as a shared pretraining corpus for heterogeneous robot embodiments.
 
 \subsection{Task-level analysis}
 
