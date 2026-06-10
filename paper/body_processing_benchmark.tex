@@ -26,7 +26,9 @@ For grippers and hands, values are stored according to the actual physical trave
 
 \subsection{HDF5-to-LeRobot v2.1 conversion}
 
-After validation and schema alignment, Baihu is converted from the source HDF5 format into LeRobot v2.1. This conversion separates the source storage format from the model-training format: HDF5 provides the raw trajectory container, while LeRobot v2.1 provides the standardized dataset interface used by downstream training and evaluation pipelines.
+After validation and schema alignment, Baihu is converted from the source HDF5 records into the LeRobot v2.1 format. The conversion standardizes episode and frame organization, synchronized visual observations, robot states, actions, human-provided task annotations, and episode-level metadata. This separates the source storage format from the model-training representation: HDF5 provides the original trajectory container, while LeRobot v2.1 provides a consistent interface for dataset loading, episode management, and downstream training.
+
+Because the robot platforms have different embodiments and control spaces, Baihu does not force all platforms into an identical observation or action vector. Instead, each platform retains its modality-specific state, action, and camera schema within the shared LeRobot v2.1 interface. This design enables consistent data access across platforms while preserving the physical control semantics of each robot.
 
 \section{Benchmark Experiments}
 
