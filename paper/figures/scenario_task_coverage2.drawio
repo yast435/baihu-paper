@@ -1,0 +1,55 @@
+<mxfile host="app.diagrams.net" agent="Codex">
+  <diagram id="scenario-task-coverage" name="Scenario Task Coverage">
+    <mxGraphModel dx="1984" dy="1158" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1040" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="scenario-sector-1" parent="1" style="shape=image;verticalLabelPosition=bottom;verticalAlign=top;imageAspect=0;aspect=fixed;strokeColor=none;fillColor=none;image=data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22877.21%22%20height%3D%22721.41%22%20viewBox%3D%220%200%20877.21%20721.41%22%3E%3Cpath%20d%3D%22M%20416.23%20260.43%20L%20793.45%206.00%20L%20806.40%2026.35%20L%20818.26%2047.36%20L%20828.99%2068.97%20L%20838.56%2091.11%20L%20846.94%20113.74%20L%20854.11%20136.77%20L%20860.04%20160.15%20L%20864.74%20183.82%20L%20868.17%20207.70%20L%20870.33%20231.72%20L%20871.21%20255.83%20L%20870.81%20279.95%20L%20869.14%20304.02%20L%20866.19%20327.96%20L%20861.98%20351.72%20L%20856.52%20375.21%20L%20849.81%20398.39%20L%20841.89%20421.18%20L%20832.78%20443.51%20L%20822.49%20465.33%20L%20811.05%20486.58%20L%20798.51%20507.19%20L%20784.90%20527.10%20L%20770.25%20546.27%20L%20754.60%20564.63%20L%20738.00%20582.13%20L%20720.50%20598.74%20L%20702.14%20614.39%20L%20682.98%20629.04%20L%20663.06%20642.66%20L%20642.46%20655.21%20L%20621.22%20666.64%20L%20599.40%20676.94%20L%20577.06%20686.06%20L%20554.28%20693.99%20L%20531.11%20700.69%20L%20507.61%20706.16%20L%20483.86%20710.38%20L%20459.91%20713.33%20L%20435.85%20715.01%20L%20411.72%20715.41%20L%20387.62%20714.53%20L%20363.59%20712.38%20L%20339.71%20708.95%20L%20316.04%20704.26%20L%20292.66%20698.33%20L%20269.62%20691.17%20L%20247.00%20682.79%20L%20224.85%20673.23%20L%20203.24%20662.50%20L%20182.23%20650.65%20L%20161.88%20637.70%20L%20142.24%20623.68%20L%20123.37%20608.65%20L%20105.33%20592.64%20L%2088.16%20575.69%20L%2071.91%20557.86%20L%2056.63%20539.19%20L%2042.36%20519.74%20L%2029.14%20499.56%20L%2017.01%20478.71%20L%206.00%20457.24%20Z%22%20fill%3D%22%2358A451%22%20stroke%3D%22%23FFFFFF%22%20stroke-width%3D%224%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E;" value="" vertex="1">
+          <mxGeometry height="721.41" width="877.21" x="93.77" y="254.57" as="geometry" />
+        </mxCell>
+        <mxCell id="scenario-sector-2" parent="1" style="shape=image;verticalLabelPosition=bottom;verticalAlign=top;imageAspect=0;aspect=fixed;strokeColor=none;fillColor=none;image=data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22466.85%22%20height%3D%22447.90%22%20viewBox%3D%220%200%20466.85%20447.90%22%3E%3Cpath%20d%3D%22M%20460.85%20245.10%20L%2050.61%20441.90%20L%2040.82%20420.04%20L%2032.20%20397.69%20L%2024.76%20374.91%20L%2018.53%20351.77%20L%2013.53%20328.34%20L%209.76%20304.68%20L%207.25%20280.86%20L%206.00%20256.93%20L%206.01%20232.97%20L%207.28%20209.04%20L%209.80%20185.22%20L%2013.58%20161.56%20L%2018.60%20138.13%20L%2024.84%20115.00%20L%2032.29%2092.23%20L%2040.93%2069.88%20L%2050.74%2048.02%20L%2061.68%2026.71%20L%2073.73%206.00%20Z%22%20fill%3D%22%23FA8C25%22%20stroke%3D%22%23FFFFFF%22%20stroke-width%3D%224%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E;" value="" vertex="1">
+          <mxGeometry height="447.9" width="466.85" x="49.15" y="269.9" as="geometry" />
+        </mxCell>
+        <mxCell id="scenario-sector-3" parent="1" style="shape=image;verticalLabelPosition=bottom;verticalAlign=top;imageAspect=0;aspect=fixed;strokeColor=none;fillColor=none;image=data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22399.12%22%20height%3D%22462.62%22%20viewBox%3D%220%200%20399.12%20462.62%22%3E%3Cpath%20d%3D%22M%20393.12%20456.62%20L%206.00%20217.53%20L%2019.71%20196.64%20L%2034.54%20176.53%20L%2050.46%20157.27%20L%2067.40%20138.92%20L%2085.33%20121.52%20L%20104.19%20105.13%20L%20123.92%2089.80%20L%20144.46%2075.58%20L%20165.75%2062.50%20L%20187.73%2050.62%20L%20210.32%2039.95%20L%20233.47%2030.55%20L%20257.10%2022.43%20L%20281.13%2015.62%20L%20305.51%2010.14%20L%20330.15%206.00%20Z%22%20fill%3D%22%23E4555A%22%20stroke%3D%22%23FFFFFF%22%20stroke-width%3D%224%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E;" value="" vertex="1">
+          <mxGeometry height="462.62" width="399.12" x="116.88" y="58.38" as="geometry" />
+        </mxCell>
+        <mxCell id="scenario-sector-4" parent="1" style="shape=image;verticalLabelPosition=bottom;verticalAlign=top;imageAspect=0;aspect=fixed;strokeColor=none;fillColor=none;image=data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22279.64%22%20height%3D%22466.84%22%20viewBox%3D%220%200%20279.64%20466.84%22%3E%3Cpath%20d%3D%22M%2068.97%20460.84%20L%206.00%2010.22%20L%2030.88%207.44%20L%2055.88%206.03%20L%2080.92%206.00%20L%20105.92%207.35%20L%20130.81%2010.07%20L%20155.52%2014.15%20L%20179.96%2019.59%20L%20204.06%2026.36%20L%20227.76%2034.45%20L%20250.97%2043.83%20L%20273.64%2054.48%20Z%22%20fill%3D%22%23AE7CA2%22%20stroke%3D%22%23FFFFFF%22%20stroke-width%3D%224%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E;" value="" vertex="1">
+          <mxGeometry height="466.84" width="279.64" x="441.03" y="54.16" as="geometry" />
+        </mxCell>
+        <mxCell id="scenario-sector-5" parent="1" style="shape=image;verticalLabelPosition=bottom;verticalAlign=top;imageAspect=0;aspect=fixed;strokeColor=none;fillColor=none;image=data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22389.21%22%20height%3D%22418.37%22%20viewBox%3D%220%200%20389.21%20418.37%22%3E%3Cpath%20d%3D%22M%206.00%20412.37%20L%20210.67%206.00%20L%20233.39%2018.26%20L%20255.38%2031.80%20L%20276.57%2046.56%20L%20296.89%2062.50%20L%20316.26%2079.56%20L%20334.64%2097.70%20L%20351.96%20116.85%20L%20368.17%20136.95%20L%20383.21%20157.93%20Z%22%20fill%3D%22%23F2CC42%22%20stroke%3D%22%23FFFFFF%22%20stroke-width%3D%224%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E;" value="" vertex="1">
+          <mxGeometry height="418.37" width="389.21" x="504" y="102.63" as="geometry" />
+        </mxCell>
+        <mxCell id="label-household" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=27;fontStyle=1;fontColor=#FFFFFF;whiteSpace=wrap;" value="&lt;font style=&quot;font-size: 30px;&quot;&gt;Household service&lt;/font&gt;" vertex="1">
+          <mxGeometry height="82" width="354" x="490" y="630" as="geometry" />
+        </mxCell>
+        <mxCell id="percent-household" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=24;fontStyle=0;fontColor=#FFFFFF;whiteSpace=wrap;" value="&lt;div&gt;1,564 tasks&lt;/div&gt;52.33%" vertex="1">
+          <mxGeometry height="45" width="180" x="560" y="710" as="geometry" />
+        </mxCell>
+        <mxCell id="label-other" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=27;fontStyle=1;fontColor=#202020;whiteSpace=wrap;" value="&lt;font style=&quot;font-size: 30px;&quot;&gt;Other&lt;/font&gt;" vertex="1">
+          <mxGeometry height="45" width="180" x="105" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="percent-other" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=24;fontStyle=0;fontColor=#202020;whiteSpace=wrap;" value="&lt;div&gt;476 tasks&lt;/div&gt;15.93%" vertex="1">
+          <mxGeometry height="45" width="180" x="105" y="475" as="geometry" />
+        </mxCell>
+        <mxCell id="label-retail" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=27;fontStyle=1;fontColor=#FFFFFF;whiteSpace=wrap;" value="&lt;font style=&quot;font-size: 30px;&quot;&gt;Retail &amp;amp; pharmacy&lt;/font&gt;" vertex="1">
+          <mxGeometry height="82" width="365" x="125" y="221" as="geometry" />
+        </mxCell>
+        <mxCell id="percent-retail" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=24;fontStyle=0;fontColor=#FFFFFF;whiteSpace=wrap;" value="&lt;div&gt;418 tasks&lt;/div&gt;13.98%" vertex="1">
+          <mxGeometry height="45" width="180" x="226.44" y="299" as="geometry" />
+        </mxCell>
+        <mxCell id="label-catering" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=27;fontStyle=1;fontColor=#FFFFFF;whiteSpace=wrap;" value="&lt;font style=&quot;font-size: 30px;&quot;&gt;Catering service&lt;/font&gt;" vertex="1">
+          <mxGeometry height="45" width="280" x="439.67" y="102.63" as="geometry" />
+        </mxCell>
+        <mxCell id="percent-catering" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=24;fontStyle=0;fontColor=#FFFFFF;whiteSpace=wrap;" value="&lt;div&gt;288 tasks&lt;/div&gt;9.64%" vertex="1">
+          <mxGeometry height="45" width="170" x="480" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="label-industrial" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=27;fontStyle=1;fontColor=#202020;whiteSpace=wrap;" value="&lt;font style=&quot;font-size: 30px;&quot;&gt;&lt;font style=&quot;&quot;&gt;Industria&lt;/font&gt;&lt;font style=&quot;&quot;&gt;l&lt;/font&gt;&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 30px;&quot;&gt;manufacturing&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="45" width="190" x="659" y="212" as="geometry" />
+        </mxCell>
+        <mxCell id="percent-industrial" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=24;fontStyle=0;fontColor=#202020;whiteSpace=wrap;" value="&lt;div&gt;243 tasks&lt;/div&gt;8.13%" vertex="1">
+          <mxGeometry height="45" width="170" x="659" y="275" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
