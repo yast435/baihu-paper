@@ -1,0 +1,169 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Baihu Data Processing Pipeline" id="e9La-IIqyrwo50qnRQKf">
+    <mxGraphModel dx="1984" dy="1158" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="BpPJwRzbyKyDOfho30D1-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F7FAFD;strokeColor=none;" value="" vertex="1">
+          <mxGeometry height="850" width="1720" x="40" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="BpPJwRzbyKyDOfho30D1-2" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=36;fontStyle=1;fontColor=#17324D;" value="Baihu Data Processing Pipeline" vertex="1">
+          <mxGeometry height="55" width="800" x="70" y="87" as="geometry" />
+        </mxCell>
+        <mxCell id="BpPJwRzbyKyDOfho30D1-3" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=18;fontColor=#597086;" value="From heterogeneous human-teleoperated HDF5 trajectories to a unified, model-ready LeRobot v2.1 dataset" vertex="1">
+          <mxGeometry height="34" width="1150" x="72" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="BpPJwRzbyKyDOfho30D1-4" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#F4FAFF;strokeColor=#7FB6DD;strokeWidth=2;" value="" vertex="1">
+          <mxGeometry height="510" width="285" x="55" y="175" as="geometry" />
+        </mxCell>
+        <mxCell id="BpPJwRzbyKyDOfho30D1-7" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontFamily=Arial;fontSize=15;fontStyle=1;fontColor=#2878B5;" value="SOURCE DATA" vertex="1">
+          <mxGeometry height="30" width="190" x="80" y="198" as="geometry" />
+        </mxCell>
+        <mxCell id="BpPJwRzbyKyDOfho30D1-8" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontFamily=Arial;fontSize=24;fontStyle=1;fontColor=#18324B;" value="Platform-specific&lt;br&gt;HDF5 trajectories" vertex="1">
+          <mxGeometry height="70" width="230" x="80" y="235" as="geometry" />
+        </mxCell>
+        <mxCell id="BpPJwRzbyKyDOfho30D1-9" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#D8ECFB;strokeColor=#2878B5;strokeWidth=2;fontColor=#1F5E8C;fontStyle=1;fontSize=17;" value="HDF5" vertex="1">
+          <mxGeometry height="86" width="92" x="83" y="318" as="geometry" />
+        </mxCell>
+        <mxCell id="BpPJwRzbyKyDOfho30D1-10" parent="1" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#D9EDFB;strokeColor=none;fontColor=#1F6597;fontStyle=1;fontSize=14;" value="13 platforms" vertex="1">
+          <mxGeometry height="36" width="120" x="190" y="325" as="geometry" />
+        </mxCell>
+        <mxCell id="BpPJwRzbyKyDOfho30D1-11" parent="1" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#E7F3FB;strokeColor=none;fontColor=#1F6597;fontStyle=1;fontSize=14;" value="Human teleop." vertex="1">
+          <mxGeometry height="36" width="120" x="190" y="372" as="geometry" />
+        </mxCell>
+        <mxCell id="BpPJwRzbyKyDOfho30D1-12" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontFamily=Arial;fontSize=15;fontColor=#4C6277;" value="Each episode may contain:" vertex="1">
+          <mxGeometry height="30" width="220" x="80" y="435" as="geometry" />
+        </mxCell>
+        <mxCell id="BpPJwRzbyKyDOfho30D1-13" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontFamily=Arial;fontSize=16;fontColor=#334E68;spacingLeft=2;" value="• Multi-view observations&lt;br&gt;&lt;br&gt;• Robot states and actions&lt;br&gt;&lt;br&gt;• Task / episode metadata&lt;br&gt;&lt;br&gt;• Timestamps and ordering&lt;br&gt;&lt;br&gt;• Source-specific modalities" vertex="1">
+          <mxGeometry height="180" width="240" x="80" y="477" as="geometry" />
+        </mxCell>
+        <mxCell id="BpPJwRzbyKyDOfho30D1-14" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#F4FCF8;strokeColor=#80C9AA;strokeWidth=2;" value="" vertex="1">
+          <mxGeometry height="510" width="320" x="385" y="175" as="geometry" />
+        </mxCell>
+        <mxCell id="BpPJwRzbyKyDOfho30D1-17" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontFamily=Arial;fontSize=15;fontStyle=1;fontColor=#2F9B71;" value="VALIDATE &amp; FILTER" vertex="1">
+          <mxGeometry height="30" width="220" x="410" y="198" as="geometry" />
+        </mxCell>
+        <mxCell id="BpPJwRzbyKyDOfho30D1-18" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontFamily=Arial;fontSize=24;fontStyle=1;fontColor=#18324B;" value="Trajectory validation&lt;br&gt;&amp; quality control" vertex="1">
+          <mxGeometry height="70" width="260" x="410" y="235" as="geometry" />
+        </mxCell>
+        <mxCell id="BpPJwRzbyKyDOfho30D1-19" parent="1" style="rounded=1;arcSize=20;whiteSpace=wrap;html=1;align=left;spacingLeft=15;fillColor=#FFFFFF;strokeColor=#C6E5D7;fontColor=#334E68;fontSize=16;" value="✓  Temporal ordering" vertex="1">
+          <mxGeometry height="52" width="270" x="410" y="318" as="geometry" />
+        </mxCell>
+        <mxCell id="BpPJwRzbyKyDOfho30D1-20" parent="1" style="rounded=1;arcSize=20;whiteSpace=wrap;html=1;align=left;spacingLeft=15;fillColor=#FFFFFF;strokeColor=#C6E5D7;fontColor=#334E68;fontSize=16;" value="✓  Usable modality fields" vertex="1">
+          <mxGeometry height="52" width="270" x="410" y="380" as="geometry" />
+        </mxCell>
+        <mxCell id="BpPJwRzbyKyDOfho30D1-21" parent="1" style="rounded=1;arcSize=20;whiteSpace=wrap;html=1;align=left;spacingLeft=15;fillColor=#FFFFFF;strokeColor=#C6E5D7;fontColor=#334E68;fontSize=16;" value="✓  Task / platform validity" vertex="1">
+          <mxGeometry height="52" width="270" x="410" y="442" as="geometry" />
+        </mxCell>
+        <mxCell id="BpPJwRzbyKyDOfho30D1-22" parent="1" style="rounded=1;arcSize=20;whiteSpace=wrap;html=1;align=left;spacingLeft=15;fillColor=#FFFFFF;strokeColor=#C6E5D7;fontColor=#334E68;fontSize=16;" value="✓  Observation-action alignment" vertex="1">
+          <mxGeometry height="52" width="270" x="410" y="504" as="geometry" />
+        </mxCell>
+        <mxCell id="BpPJwRzbyKyDOfho30D1-23" parent="1" style="rounded=1;arcSize=20;whiteSpace=wrap;html=1;align=left;spacingLeft=15;fillColor=#E9F7F0;strokeColor=#8DCDB2;fontColor=#334E68;fontSize=16;" value="✓  Consistent with intended&lt;br&gt;     task specification" vertex="1">
+          <mxGeometry height="76" width="270" x="410" y="566" as="geometry" />
+        </mxCell>
+        <mxCell id="BpPJwRzbyKyDOfho30D1-24" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#F9F6FF;strokeColor=#B29BD9;strokeWidth=2;" value="" vertex="1">
+          <mxGeometry height="510" width="345" x="750" y="175" as="geometry" />
+        </mxCell>
+        <mxCell id="BpPJwRzbyKyDOfho30D1-27" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontFamily=Arial;fontSize=15;fontStyle=1;fontColor=#7656B7;" value="STANDARDIZE &amp; ALIGN" vertex="1">
+          <mxGeometry height="30" width="240" x="775" y="198" as="geometry" />
+        </mxCell>
+        <mxCell id="BpPJwRzbyKyDOfho30D1-28" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontFamily=Arial;fontSize=24;fontStyle=1;fontColor=#18324B;" value="Metadata and&lt;br&gt;embodiment schemas" vertex="1">
+          <mxGeometry height="70" width="280" x="775" y="235" as="geometry" />
+        </mxCell>
+        <mxCell id="BpPJwRzbyKyDOfho30D1-29" parent="1" style="rounded=1;arcSize=16;whiteSpace=wrap;html=1;align=left;spacingLeft=18;fillColor=#FFFFFF;strokeColor=#D7CAEC;fontColor=#334E68;fontSize=15;" value="&lt;b&gt;Metadata&lt;/b&gt;&lt;br&gt;Task, platform, episode&lt;br&gt;and source-specific fields" vertex="1">
+          <mxGeometry height="100" width="295" x="775" y="318" as="geometry" />
+        </mxCell>
+        <mxCell id="BpPJwRzbyKyDOfho30D1-30" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=15;fillColor=#FFFFFF;strokeColor=#D7CAEC;fontColor=#334E68;fontSize=15;" value="&lt;b&gt;Platform-specific schemas&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;font color=&quot;#7656B7&quot;&gt;ARM&lt;/font&gt;   [ joint dimensions ]&lt;br&gt;&lt;br&gt;&lt;font color=&quot;#A87521&quot;&gt;HAND&lt;/font&gt; [ native physical range ]&lt;br&gt;&lt;br&gt;&lt;font color=&quot;#28668C&quot;&gt;BASE&lt;/font&gt;  [ mobile-base motion ]" vertex="1">
+          <mxGeometry height="170" width="295" x="775" y="435" as="geometry" />
+        </mxCell>
+        <mxCell id="BpPJwRzbyKyDOfho30D1-31" parent="1" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#7656B7;strokeColor=none;fontColor=#FFFFFF;fontStyle=1;fontSize=14;" value="Preserve native control semantics" vertex="1">
+          <mxGeometry height="42" width="295" x="775" y="622" as="geometry" />
+        </mxCell>
+        <mxCell id="BpPJwRzbyKyDOfho30D1-32" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#FFFAF1;strokeColor=#E4B36D;strokeWidth=2;" value="" vertex="1">
+          <mxGeometry height="510" width="295" x="1140" y="175" as="geometry" />
+        </mxCell>
+        <mxCell id="BpPJwRzbyKyDOfho30D1-35" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontFamily=Arial;fontSize=15;fontStyle=1;fontColor=#C5751C;" value="CONVERT" vertex="1">
+          <mxGeometry height="30" width="150" x="1165" y="198" as="geometry" />
+        </mxCell>
+        <mxCell id="BpPJwRzbyKyDOfho30D1-36" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontFamily=Arial;fontSize=24;fontStyle=1;fontColor=#18324B;" value="HDF5 to&lt;br&gt;LeRobot v2.1" vertex="1">
+          <mxGeometry height="70" width="230" x="1165" y="235" as="geometry" />
+        </mxCell>
+        <mxCell id="BpPJwRzbyKyDOfho30D1-37" parent="1" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#FFF4DF;strokeColor=#D88728;strokeWidth=2;fontColor=#A85F14;fontStyle=1;fontSize=18;" value="H5" vertex="1">
+          <mxGeometry height="90" width="80" x="1165" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="BpPJwRzbyKyDOfho30D1-38" parent="1" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#F1FBF5;strokeColor=#3C9B68;strokeWidth=2;fontColor=#28784E;fontStyle=1;fontSize=15;" value="LeRobot&lt;br&gt;v2.1" vertex="1">
+          <mxGeometry height="90" width="84" x="1325" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="BpPJwRzbyKyDOfho30D1-39" edge="1" parent="1" source="BpPJwRzbyKyDOfho30D1-37" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#D88728;strokeWidth=3;" target="BpPJwRzbyKyDOfho30D1-38" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="BpPJwRzbyKyDOfho30D1-40" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontFamily=Arial;fontSize=15;fontColor=#4C6277;" value="Standardized organization:" vertex="1">
+          <mxGeometry height="30" width="230" x="1165" y="435" as="geometry" />
+        </mxCell>
+        <mxCell id="BpPJwRzbyKyDOfho30D1-41" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#FFF5E3;strokeColor=#F0D2A4;fontColor=#334E68;fontSize=16;" value="Episodes      Frames&lt;br&gt;&lt;br&gt;Observations   States&lt;br&gt;&lt;br&gt;Actions        Task labels&lt;br&gt;&lt;br&gt;Episode-level metadata" vertex="1">
+          <mxGeometry height="165" width="245" x="1165" y="480" as="geometry" />
+        </mxCell>
+        <mxCell id="BpPJwRzbyKyDOfho30D1-42" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#F2FBFB;strokeColor=#77BDC0;strokeWidth=2;" value="" vertex="1">
+          <mxGeometry height="510" width="265" x="1480" y="175" as="geometry" />
+        </mxCell>
+        <mxCell id="BpPJwRzbyKyDOfho30D1-45" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontFamily=Arial;fontSize=15;fontStyle=1;fontColor=#208B91;" value="MODEL-READY OUTPUT" vertex="1">
+          <mxGeometry height="30" width="220" x="1505" y="198" as="geometry" />
+        </mxCell>
+        <mxCell id="BpPJwRzbyKyDOfho30D1-46" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontFamily=Arial;fontSize=24;fontStyle=1;fontColor=#18324B;" value="Unified access,&lt;br&gt;native semantics" vertex="1">
+          <mxGeometry height="70" width="220" x="1505" y="235" as="geometry" />
+        </mxCell>
+        <mxCell id="BpPJwRzbyKyDOfho30D1-47" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#E3F5F5;strokeColor=#208B91;strokeWidth=2;fontColor=#208B91;fontStyle=1;fontSize=18;" value="LeRobot&lt;br&gt;v2.1" vertex="1">
+          <mxGeometry height="120" width="155" x="1535" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="BpPJwRzbyKyDOfho30D1-48" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontFamily=Arial;fontSize=16;fontStyle=1;fontColor=#334E68;" value="Shared LeRobot loader" vertex="1">
+          <mxGeometry height="30" width="195" x="1515" y="452" as="geometry" />
+        </mxCell>
+        <mxCell id="BpPJwRzbyKyDOfho30D1-49" parent="1" style="rounded=1;arcSize=20;whiteSpace=wrap;html=1;align=left;spacingLeft=14;fillColor=#FFFFFF;strokeColor=#B9DDDD;fontColor=#334E68;fontSize=16;" value="+  Imitation learning" vertex="1">
+          <mxGeometry height="45" width="215" x="1505" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="BpPJwRzbyKyDOfho30D1-50" parent="1" style="rounded=1;arcSize=20;whiteSpace=wrap;html=1;align=left;spacingLeft=14;fillColor=#FFFFFF;strokeColor=#B9DDDD;fontColor=#334E68;fontSize=16;" value="+  VLA pretraining" vertex="1">
+          <mxGeometry height="45" width="215" x="1505" y="557" as="geometry" />
+        </mxCell>
+        <mxCell id="BpPJwRzbyKyDOfho30D1-51" parent="1" style="rounded=1;arcSize=20;whiteSpace=wrap;html=1;align=left;spacingLeft=14;fillColor=#FFFFFF;strokeColor=#B9DDDD;fontColor=#334E68;fontSize=16;" value="+  Training &amp; evaluation" vertex="1">
+          <mxGeometry height="45" width="215" x="1505" y="614" as="geometry" />
+        </mxCell>
+        <mxCell id="BpPJwRzbyKyDOfho30D1-52" edge="1" parent="1" source="BpPJwRzbyKyDOfho30D1-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#3274A9;strokeWidth=4;" target="BpPJwRzbyKyDOfho30D1-14" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="BpPJwRzbyKyDOfho30D1-53" edge="1" parent="1" source="BpPJwRzbyKyDOfho30D1-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#3274A9;strokeWidth=4;" target="BpPJwRzbyKyDOfho30D1-24" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="BpPJwRzbyKyDOfho30D1-54" edge="1" parent="1" source="BpPJwRzbyKyDOfho30D1-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#3274A9;strokeWidth=4;" target="BpPJwRzbyKyDOfho30D1-32" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="BpPJwRzbyKyDOfho30D1-55" edge="1" parent="1" source="BpPJwRzbyKyDOfho30D1-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#3274A9;strokeWidth=4;" target="BpPJwRzbyKyDOfho30D1-42" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="BpPJwRzbyKyDOfho30D1-56" parent="1" style="rounded=1;arcSize=16;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacing=18;fillColor=#FFF7F7;strokeColor=#DF8A8A;strokeWidth=2;fontColor=#A74343;fontSize=14;" value="&lt;font style=&quot;&quot;&gt;&lt;b style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 24px;&quot;&gt;Rejected trajectories&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8E4B4B&quot; style=&quot;font-size: 18px;&quot;&gt;Wrong scene / objects  ·  Incomplete task  ·  Corrupted recording&lt;br&gt;Wrong procedure  ·  Metadata mismatch  ·  Missing fields / misalignment&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="150" width="565" x="85" y="735" as="geometry" />
+        </mxCell>
+        <mxCell id="BpPJwRzbyKyDOfho30D1-57" edge="1" parent="1" source="BpPJwRzbyKyDOfho30D1-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;dashed=1;dashPattern=8 8;strokeColor=#D75B5B;strokeWidth=3;" target="BpPJwRzbyKyDOfho30D1-56" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="BpPJwRzbyKyDOfho30D1-58" parent="1" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#CBD8E3;strokeWidth=2;" value="" vertex="1">
+          <mxGeometry height="150" width="1040" x="705" y="735" as="geometry" />
+        </mxCell>
+        <mxCell id="BpPJwRzbyKyDOfho30D1-59" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontFamily=Arial;fontSize=15;fontStyle=1;fontColor=#536B81;" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;DESIGN PRINCIPLES&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="220" x="735" y="753" as="geometry" />
+        </mxCell>
+        <mxCell id="BpPJwRzbyKyDOfho30D1-60" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=15;fontColor=#334E68;" value="&lt;font style=&quot;&quot;&gt;&lt;b style=&quot;font-size: 18px;&quot;&gt;✓  Preserve&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 18px;&quot;&gt;embodiment-specific control information&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="62" width="320" x="736" y="792" as="geometry" />
+        </mxCell>
+        <mxCell id="BpPJwRzbyKyDOfho30D1-61" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=15;fontColor=#334E68;" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;&lt;b&gt;✓  Filter&lt;/b&gt;&lt;br&gt;invalid or task-inconsistent data&lt;/font&gt;" vertex="1">
+          <mxGeometry height="62" width="280" x="1103" y="792" as="geometry" />
+        </mxCell>
+        <mxCell id="BpPJwRzbyKyDOfho30D1-62" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=15;fontColor=#334E68;" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;&lt;b&gt;✓  Unify&lt;/b&gt;&lt;br&gt;loading without flattening diversity&lt;/font&gt;" vertex="1">
+          <mxGeometry height="62" width="280" x="1440" y="792" as="geometry" />
+        </mxCell>
+        <mxCell id="BpPJwRzbyKyDOfho30D1-63" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontFamily=Arial;fontSize=13;fontColor=#597086;" value="Quality-controlled episodes retain platform-specific observation, state, action, and camera schemas within a shared LeRobot v2.1 interface." vertex="1">
+          <mxGeometry height="28" width="1200" x="300" y="895" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
