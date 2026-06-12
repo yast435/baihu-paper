@@ -43,11 +43,11 @@ To demonstrate the value of Baihu for embodied foundation model adaptation, we e
 
 \subsection{Offline open-loop zero-shot evaluation}
 
-Open-loop evaluation provides an offline assessment by comparing the model's predicted actions against reference actions from human-teleoperated robot demonstrations. In this benchmark, we compare a no-training GR00T N1.6 checkpoint~\cite{nvidia2025grootn1}, checkpoint-1, with checkpoint-390000, which was fully fine-tuned on Baihu for one epoch. The evaluation covers \textbf{13 platforms} and \textbf{42 paired task-dataset records} drawn from datasets that are external to Baihu and excluded from Baihu training. No additional finetuning is performed on these evaluation datasets. We therefore use zero-shot to denote dataset-level transfer from Baihu fine-tuning to external held-out evaluation data.
+Open-loop evaluation provides an offline assessment by comparing the model's predicted actions against reference actions from human-teleoperated robot demonstrations. In this benchmark, we compare a no-training GR00T N1.6 baseline model~\cite{nvidia2025grootn1} with the same model after one epoch of full fine-tuning on Baihu. The evaluation covers \textbf{13 platforms} and \textbf{42 paired task-dataset records} drawn from datasets that are external to Baihu and excluded from Baihu training. No additional finetuning is performed on these evaluation datasets. We therefore use zero-shot to denote dataset-level transfer from Baihu fine-tuning to external held-out evaluation data.
 
 \subsection{Evaluation protocol}
 
-For each task-dataset record, five trajectories are randomly sampled from the corresponding external evaluation dataset. The same sampled trajectories are then used to evaluate both checkpoints, providing a paired comparison between the no-training baseline and the Baihu-trained model. The model predicts actions from the recorded observations of each trajectory, and the prediction error is measured against the associated human-teleoperation actions. Predictions are generated with an action horizon of 30, and each trajectory is evaluated over its available length up to a maximum of 3000 steps. The task-level result is obtained by averaging the trajectory-level MSE values over the five trajectories.
+For each task-dataset record, five trajectories are randomly sampled from the corresponding external evaluation dataset. The same sampled trajectories are then used to evaluate both models, providing a paired comparison between the no-training baseline and the Baihu-trained model. The model predicts actions from the recorded observations of each trajectory, and the prediction error is measured against the associated human-teleoperation actions. Predictions are generated with an action horizon of 30, and each trajectory is evaluated over its available length up to a maximum of 3000 steps. The task-level result is obtained by averaging the trajectory-level MSE values over the five trajectories.
 
 Per-platform results are computed as the unweighted mean over the task-dataset records associated with each platform. The overall benchmark result is then reported as the unweighted mean across all 42 paired task-dataset records. This evaluation design gives each task-dataset record equal weight, independent of the amount of data available for a particular platform or task.
 
@@ -68,7 +68,7 @@ All reported MSE values are normalized by action range to make errors more compa
 \label{eq:normalized-mse}
 \end{equation}
 
-where $a_{t,d}$ and $\hat{a}_{t,d}$ denote the reference and predicted action values for dimension $d$ at timestep $t$, respectively, and $a_{d}^{\max}-a_{d}^{\min}$ is the corresponding action range. The same action normalization statistics are used for checkpoint-1 and checkpoint-390000, ensuring that the two checkpoints are compared under an identical metric scale.
+where $a_{t,d}$ and $\hat{a}_{t,d}$ denote the reference and predicted action values for dimension $d$ at timestep $t$, respectively, and $a_{d}^{\max}-a_{d}^{\min}$ is the corresponding action range. The same action normalization statistics are used for the no-training baseline and the Baihu-trained model, ensuring that both models are compared under an identical metric scale.
 
 \textbf{Normalized ALL MSE} is used as the primary evaluation metric. In Eq.~\ref{eq:normalized-mse}, $D$ includes the complete action vector, consisting of robot joint actions and end-effector actuation dimensions such as grippers or dexterous hands.
 
@@ -76,18 +76,18 @@ where $a_{t,d}$ and $\hat{a}_{t,d}$ denote the reference and predicted action va
 
 \subsection{Overall results}
 
-The benchmark results show that one epoch of full-parameter fine-tuning on Baihu substantially reduces normalized offline open-loop prediction error across the 13 evaluated platforms and 42 external paired task-dataset records. At the aggregate level, the Baihu-trained checkpoint reduces Normalized ALL MSE from 0.157283 to 0.005051, corresponding to a \textbf{96.79\%} relative improvement. It also reduces Normalized Joint MSE from 0.116746 to 0.000680, corresponding to a \textbf{99.42\%} relative improvement. The per-platform comparisons are visualized in Fig.~\ref{fig:per-platform-zero-shot}.
+The benchmark results show that one epoch of full-parameter fine-tuning on Baihu substantially reduces normalized offline open-loop prediction error across the 13 evaluated platforms and 42 external paired task-dataset records. At the aggregate level, the Baihu-trained model reduces Normalized ALL MSE from 0.157283 to 0.005051, corresponding to a \textbf{96.79\%} relative improvement. It also reduces Normalized Joint MSE from 0.116746 to 0.000680, corresponding to a \textbf{99.42\%} relative improvement. The per-platform comparisons are visualized in Fig.~\ref{fig:per-platform-zero-shot}.
 
 This indicates that Baihu provides effective supervision for improving full-vector and joint-related action prediction on evaluation data that were not included in the Baihu training corpus.
 
 \subsection{Per-platform results}
 
-Because Baihu is a multi-embodiment dataset, aggregate metrics alone are insufficient. We therefore also analyze the results separately for each evaluated platform. Across all 13 platforms, the Baihu-trained checkpoint achieves lower Normalized ALL MSE and Normalized Joint MSE than the no-training baseline.
+Because Baihu is a multi-embodiment dataset, aggregate metrics alone are insufficient. We therefore also analyze the results separately for each evaluated platform. Across all 13 platforms, the Baihu-trained model achieves lower Normalized ALL MSE and Normalized Joint MSE than the no-training baseline.
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=\textwidth]{figures/per_platform_zero_shot_dumbbell.jpg}
-\caption{Per-platform offline zero-shot evaluation on datasets external to Baihu. Each row compares the no-training GR00T N1.6 checkpoint (checkpoint-1) with the checkpoint fully fine-tuned on Baihu for one epoch (checkpoint-390000) for Normalized ALL MSE and Normalized Joint MSE. Connected markers show the change after Baihu fine-tuning; lower is better. Each platform value is the unweighted mean over its paired task-dataset records. QingLong contains six records, while each of the remaining platforms contains three.}
+\caption{Per-platform offline zero-shot evaluation on datasets external to Baihu. Each row compares the no-training GR00T N1.6 baseline with the Baihu-trained model after one epoch of full fine-tuning on Baihu for Normalized ALL MSE and Normalized Joint MSE. Connected markers show the change after Baihu fine-tuning; lower is better. Each platform value is the unweighted mean over its paired task-dataset records. QingLong contains six records, while each of the remaining platforms contains three.}
 \label{fig:per-platform-zero-shot}
 \end{figure}
 
@@ -105,7 +105,7 @@ The strongest improvements are observed on records where the no-training checkpo
 
 The offline zero-shot benchmark evaluates the first design goal of Baihu: large-scale dense trajectories for foundation-model adaptation and cross-dataset action prediction. To evaluate the second design goal, event- and keyframe-level temporal annotations for goal-oriented learning, we reserve a real-world evaluation protocol comparing policies trained with and without event-derived value supervision.
 
-In the planned evaluation, both policies will start from the same supervised fine-tuned checkpoint and will be evaluated on the same real-robot tasks under randomized initial configurations. The baseline policy will use dense trajectory supervision without event-derived value learning, while the event-guided policy will use Baihu event/keyframe annotations to construct task-progress supervision based on subgoal and event completion. This setting is designed to isolate the effect of Baihu's temporal annotations on closed-loop execution.
+In the planned evaluation, both policies will start from the same supervised fine-tuned model and will be evaluated on the same real-robot tasks under randomized initial configurations. The baseline policy will use dense trajectory supervision without event-derived value learning, while the event-guided policy will use Baihu event/keyframe annotations to construct task-progress supervision based on subgoal and event completion. This setting is designed to isolate the effect of Baihu's temporal annotations on closed-loop execution.
 
 The planned evaluation will cover one to three robot embodiments and one to three representative manipulation tasks. We will report execution success rate as the primary metric, and additionally analyze event completion rate, failure stage distribution, and time to completion. This experiment will quantify whether Baihu's temporal annotations can improve real-world execution by providing explicit supervision over task progress. Until these experiments are completed, the current paper treats event-guided value learning as a reserved evaluation direction rather than a demonstrated result.
 
