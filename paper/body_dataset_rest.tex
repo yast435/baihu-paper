@@ -48,17 +48,17 @@ Baihu also contains tasks spanning a broad range of temporal durations. For each
 
 This distribution shows that Baihu covers both short local manipulation behaviors and extended multi-stage interactions. Duration alone does not fully characterize task complexity, but it provides a quantitative view of the temporal diversity represented in the dataset.
 
-\subsection{Event- and keyframe-level temporal annotations}
+\subsection{Event-level temporal annotations}
 
-Baihu provides event- and keyframe-level temporal annotations in addition to dense observation-action trajectories. Baihu treats events as semantic temporal milestones rather than simple actuator-state changes. An event marks a frame where a subgoal is achieved, a task phase changes, or an important object-state transition occurs. For contact-rich manipulation, gripper and dexterous-hand opening or closing naturally form important events, such as grasping, releasing, pinching, or switching hand configurations. However, many manipulation tasks contain meaningful temporal nodes that are not directly reflected by gripper or hand commands.
+Baihu provides event-level temporal annotations in addition to dense observation-action trajectories. Baihu treats events as semantic temporal milestones rather than simple actuator-state changes. An event marks a temporally localized task-progress signal, such as a subgoal achievement, a task-phase transition, or an important object-state change. For contact-rich manipulation, gripper and dexterous-hand opening or closing naturally form important events, such as grasping, releasing, pinching, or switching hand configurations. However, many manipulation tasks contain meaningful temporal nodes that are not directly reflected by gripper or hand commands.
 
 For example, in cloth folding, the moment when the robot lifts the cloth to the highest point is annotated as an event because it marks the transition from lifting to folding. In container placement, the moment when the object clears the container rim can be annotated as an event. In insertion tasks, pre-insertion alignment and fully seated states can be annotated. In bimanual handover, the handover pose and load-transfer moment can be annotated as events. These examples show that Baihu events capture task progress and semantic state transitions beyond low-level actuator commands.
 
-Each event annotation is associated with an episode index, frame index, event label, event type, and annotation source. We categorize events into several types, including gripper events, contact events, motion events, alignment events, boundary-crossing events, object-state events, handover events, and deformation-related events. This design preserves the original dense trajectory representation while exposing the temporal structure of manipulation tasks.
+Each event annotation is associated with an episode index, frame index, event label, event type, and annotation source. We categorize events into several types, including gripper events, contact events, motion events, alignment events, boundary-crossing events, object-state events, handover events, and deformation-related events. The visual frame, robot state, and robot or end-effector pose at an event can be used as event attributes by downstream methods that require keyframe or keypose targets, but Baihu stores them under a unified event annotation interface. This design preserves the original dense trajectory representation while exposing the temporal structure of manipulation tasks.
 
 \begin{table}[t]
 \centering
-\caption{Examples of event- and keyframe-level temporal annotations in Baihu. Events are defined as task-dependent semantic milestones, rather than only gripper or dexterous-hand state changes.}
+\caption{Examples of event-level temporal annotations in Baihu. Events are defined as task-dependent semantic milestones, rather than only gripper or dexterous-hand state changes.}
 \label{tab:event-keyframe-examples}
 \footnotesize
 \setlength{\tabcolsep}{4pt}
@@ -81,7 +81,7 @@ Flexible-object insertion & \texttt{compression\_peak} & Soft object reaches max
 \end{adjustbox}
 \end{table}
 
-Baihu's event and keyframe annotations support a broad family of keyframe-aware learning methods. Event frames can serve as waypoints for waypoint-based imitation learning, subgoals for goal-conditioned policies, phase boundaries for hierarchical skill learning, progress signals for value-guided policy improvement, intermediate visual targets for subgoal-image reasoning, stage rewards for reward shaping, and diagnostic checkpoints for phase-aware evaluation. In this sense, the annotations are not tied to a single reinforcement-learning algorithm; they provide general temporal structure supervision for goal-oriented robot learning and evaluation.
+Baihu's event annotations support a broad family of event-aware learning methods. Event frames can serve as sparse targets for next-event prediction, waypoints or subgoals for goal-conditioned policies, boundaries for skill segmentation and hierarchical policy learning, anchors for event-to-event action generation, intermediate visual targets for future-state prediction, progress signals for value-guided policy improvement, stage rewards for reward shaping, and diagnostic checkpoints for phase-aware evaluation. In this sense, the annotations are not tied to a single reinforcement-learning algorithm; they provide general temporal structure supervision for goal-oriented robot learning and evaluation.
 
 \subsection{Robot platform composition}
 
@@ -141,10 +141,10 @@ The dataset also includes different interaction patterns between robots and obje
 
 \subsection{Data format}
 
-Baihu is converted from HDF5 source records into the LeRobot v2.1 format. Each episode is represented as a trajectory consisting of temporally ordered observation-action pairs. Depending on the robot platform and task setup, each trajectory may include platform-specific visual observations, robot state information, action commands, task labels, event/keyframe annotations, and metadata. The standardized format is intended to support direct loading by robot learning pipelines and large-scale model training systems while retaining the platform-specific observation and action schema required by each robot.
+Baihu is converted from HDF5 source records into the LeRobot v2.1 format. Each episode is represented as a trajectory consisting of temporally ordered observation-action pairs. Depending on the robot platform and task setup, each trajectory may include platform-specific visual observations, robot state information, action commands, task labels, event annotations, and metadata. The standardized format is intended to support direct loading by robot learning pipelines and large-scale model training systems while retaining the platform-specific observation and action schema required by each robot.
 
-A typical Baihu trajectory can be represented as a task instruction or task label, synchronized visual observations, robot proprioceptive states, robot actions, event/keyframe records when available, episode metadata, and frame-level timestamps or ordering information.
+A typical Baihu trajectory can be represented as a task instruction or task label, synchronized visual observations, robot proprioceptive states, robot actions, event records when available, episode metadata, and frame-level timestamps or ordering information.
 
 \subsection{Data availability}
 
-Dataset access information, platform-specific modality definitions, event/keyframe annotation schema, and accompanying benchmark resources will be provided through the official Baihu repository. Detailed licensing, permitted-use conditions, and any access requirements will be documented alongside the released resources.
+Dataset access information, platform-specific modality definitions, event annotation schema, and accompanying benchmark resources will be provided through the official Baihu repository. Detailed licensing, permitted-use conditions, and any access requirements will be documented alongside the released resources.
