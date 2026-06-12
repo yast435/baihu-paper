@@ -110,6 +110,41 @@ Baihu is converted from HDF5 source records into the LeRobot v2.1 format. Each e
 
 A typical Baihu trajectory can be represented as a task instruction or task label, synchronized visual observations, robot proprioceptive states, robot actions, episode metadata, and frame-level timestamps or ordering information.
 
+\subsection{Event- and keyframe-level temporal annotations}
+
+Baihu provides event- and keyframe-level temporal annotations in addition to dense observation-action trajectories. Baihu treats events as semantic temporal milestones rather than simple actuator-state changes. An event marks a frame where a subgoal is achieved, a task phase changes, or an important object-state transition occurs. For contact-rich manipulation, gripper and dexterous-hand opening or closing naturally form important events, such as grasping, releasing, pinching, or switching hand configurations. However, many manipulation tasks contain meaningful temporal nodes that are not directly reflected by gripper or hand commands.
+
+For example, in cloth folding, the moment when the robot lifts the cloth to the highest point is annotated as an event because it marks the transition from lifting to folding. In container placement, the moment when the object clears the container rim can be annotated as an event. In insertion tasks, pre-insertion alignment and fully seated states can be annotated. In bimanual handover, the handover pose and load-transfer moment can be annotated as events. These examples show that Baihu events capture task progress and semantic state transitions beyond low-level actuator commands.
+
+Each event annotation is associated with an episode index, frame index, event label, event type, and annotation source. We categorize events into several types, including gripper events, contact events, motion events, alignment events, boundary-crossing events, object-state events, handover events, and deformation-related events. This design preserves the original dense trajectory representation while exposing the temporal structure of manipulation tasks.
+
+\begin{table}[t]
+\centering
+\caption{Examples of event- and keyframe-level temporal annotations in Baihu. Events are defined as task-dependent semantic milestones, rather than only gripper or dexterous-hand state changes.}
+\label{tab:event-keyframe-examples}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.08}
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{lll}
+\toprule
+Task type & Example event & Event meaning \\
+\midrule
+Cloth folding & \texttt{lift\_peak} & Cloth reaches the highest lifting point before folding \\
+Container placement & \texttt{rim\_cleared} & Object passes over the container boundary \\
+Insertion & \texttt{pre\_insert\_aligned} & Object is aligned with the insertion target \\
+Bimanual handover & \texttt{handover\_pose\_reached} & Object reaches the transfer pose between two arms \\
+Stacking & \texttt{stack\_stable} & Object remains stable after placement \\
+Articulated-object interaction & \texttt{drawer\_fully\_open} & Drawer or lid reaches the fully open state \\
+Pouring & \texttt{max\_tilt\_reached} & Container reaches the maximum pouring angle \\
+Flexible-object insertion & \texttt{compression\_peak} & Soft object reaches maximum compression during insertion \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table}
+
+Baihu's event and keyframe annotations support a broad family of keyframe-aware learning methods. Event frames can serve as waypoints for waypoint-based imitation learning, subgoals for goal-conditioned policies, phase boundaries for hierarchical skill learning, progress signals for value-guided policy improvement, intermediate visual targets for subgoal-image reasoning, stage rewards for reward shaping, and diagnostic checkpoints for phase-aware evaluation. In this sense, the annotations are not tied to a single reinforcement-learning algorithm; they provide general temporal structure supervision for goal-oriented robot learning and evaluation.
+
 \subsection{Data availability}
 
 Dataset access information, platform-specific modality definitions, and accompanying benchmark resources will be provided through the official Baihu repository. Detailed licensing, permitted-use conditions, and any access requirements will be documented alongside the released resources.
