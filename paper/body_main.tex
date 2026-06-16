@@ -32,27 +32,27 @@ WhiteTiger follows this data-centric direction while targeting pretraining-scale
 
 \begin{table}[t]
 \centering
-\caption{Comparison with representative large-scale robot manipulation datasets. ``n/r'' indicates that the corresponding statistic is not reported as a primary dataset-level quantity in the cited paper. Task and skill definitions follow the conventions of each source and are therefore not directly interchangeable across datasets.}
+\caption{Comparison with representative large-scale robot manipulation datasets. ``Event ann.'' denotes dataset-level event or keyframe temporal milestone annotations. ``n/r'' indicates that the corresponding statistic is not reported as a primary dataset-level quantity in the cited paper. Task and skill definitions follow the conventions of each source and are therefore not directly interchangeable across datasets.}
 \label{tab:dataset-comparison}
 \footnotesize
 \setlength{\tabcolsep}{4pt}
 \renewcommand{\arraystretch}{1.08}
 \begin{adjustbox}{max width=\textwidth}
-\begin{tabular}{lrrrrrl}
+\begin{tabular}{lrrrrrcl}
 \toprule
-Dataset & Traj. / Ep. & Hours & Platforms & Tasks & Reported skills & Collection \\
+Dataset & Traj. / Ep. & Hours & Platforms & Tasks & Reported skills & Event ann. & Collection \\
 \midrule
-BridgeData V2~\cite{walke2023bridgedatav2} & 60.1k & n/r & 1 & n/r & 13 & Human + scripted \\
-DROID~\cite{khazatsky2024droid} & 76k & 350 & 1 & 84 & 86 & Human teleoperation \\
-RoboMIND~\cite{wu2024robomind} & 107k & n/r & 4 & 479 & 38 & Human teleoperation \\
-Open X-Embodiment~\cite{oneill2023openx} & $>1$M & n/r & 22 & 160266 & 527 & Aggregated datasets \\
-\textbf{WhiteTiger} & \textbf{513.6k} & \textbf{9521.75} & \textbf{13} & \textbf{2989} & \textbf{64} & \textbf{Fully human teleoperation} \\
+BridgeData V2~\cite{walke2023bridgedatav2} & 60.1k & n/r & 1 & n/r & 13 & No & Human + scripted \\
+DROID~\cite{khazatsky2024droid} & 76k & 350 & 1 & 84 & 86 & No & Human teleoperation \\
+RoboMIND~\cite{wu2024robomind} & 107k & n/r & 4 & 479 & 38 & No & Human teleoperation \\
+Open X-Embodiment~\cite{oneill2023openx} & $>1$M & n/r & 22 & 160266 & 527 & No & Aggregated datasets \\
+\textbf{WhiteTiger} & \textbf{513.6k} & \textbf{9521.75} & \textbf{13} & \textbf{2989} & \textbf{64} & \textbf{Yes} & \textbf{Fully human teleoperation} \\
 \bottomrule
 \end{tabular}
 \end{adjustbox}
 \end{table}
 
-Table~\ref{tab:dataset-comparison} identifies the combined position of WhiteTiger. Relative to single-platform corpora such as BridgeData V2 and DROID, WhiteTiger expands embodiment coverage and platform heterogeneity. Relative to RoboMIND, WhiteTiger contains more trajectories, tasks, and physical robot platforms. The 64-skill taxonomy reports behavioral coverage beyond task-count statistics. Open X-Embodiment covers more robot embodiments and a larger aggregate trajectory corpus through institutional aggregation. WhiteTiger instead provides a coherently managed corpus of fully human-teleoperated physical demonstrations across 13 platforms, standardized into LeRobot v2.1, with event-level temporal structure and external model-oriented evaluation.
+Table~\ref{tab:dataset-comparison} identifies the combined position of WhiteTiger. Relative to single-platform corpora such as BridgeData V2 and DROID, WhiteTiger expands embodiment coverage and platform heterogeneity. Relative to RoboMIND, WhiteTiger contains more trajectories, tasks, and physical robot platforms. The 64-skill taxonomy reports behavioral coverage beyond task-count statistics. Open X-Embodiment covers more robot embodiments and a larger aggregate trajectory corpus through institutional aggregation. WhiteTiger instead provides a coherently managed corpus of fully human-teleoperated physical demonstrations across 13 platforms, standardized into LeRobot v2.1, with reported event-level temporal milestones and external model-oriented evaluation.
 
 \subsection{Event-aware robot learning}
 
