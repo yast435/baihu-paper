@@ -25,7 +25,8 @@ The draft emphasizes:
 
 ```text
 paper/
-  main.tex                         # Main LaTeX entry point
+  main.tex                         # Main CVPR-style LaTeX entry point
+  cvpr.sty                         # Local CVPR-compatible style file
   body_main.tex                    # Abstract, introduction, related work, and dataset scale
   body_dataset_rest.tex            # Data collection protocol, skill taxonomy, platform composition, robot configurations, scenarios, objects, data format, and event/keyframe annotations
   body_processing_benchmark.tex    # Data processing pipeline and benchmark experiments
@@ -46,7 +47,19 @@ The current paper draft should be built from:
 paper/main.tex
 ```
 
-`main.tex` imports the paper body from the modular `body_*.tex` files and includes the task-level benchmark table in the appendix.
+`main.tex` imports the paper body from the modular `body_*.tex` files and uses a CVPR-compatible layout: 10 pt Times-style font, two-column letter-paper formatting, CVPR-like margins, compact section spacing, CVPR-style captions, and numeric compressed citations. The main bibliography appears before the appendix. The task-level benchmark table remains in the appendix and is switched to a single-column supplementary-style section because the table is too wide for CVPR's two-column body layout.
+
+By default, `main.tex` uses review mode:
+
+```tex
+\usepackage[review]{cvpr}
+```
+
+For an internal non-anonymous or camera-ready-style draft with page numbers, change this line to:
+
+```tex
+\usepackage[pagenumbers]{cvpr}
+```
 
 ## Baihu facts used in the current draft
 
