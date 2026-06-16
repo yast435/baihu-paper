@@ -1,14 +1,18 @@
-% A4-width replacement for Appendix task-level benchmark table.
-% Use inside main.tex after \section{Task-level benchmark results}.
+% Landscape appendix table for task-level benchmark results.
 % Required packages: booktabs, longtable, array, pdflscape.
 
 \begingroup
 \begin{landscape}
+\section{Task-level benchmark results}
+\label{app:task-level}
+\vspace{-0.75em}
 \tiny
 \setlength{\tabcolsep}{2pt}
-\renewcommand{\arraystretch}{1.05}
+\renewcommand{\arraystretch}{1.00}
 \setlength{\LTleft}{0pt}
 \setlength{\LTright}{0pt}
+\setlength{\LTpre}{0pt}
+\setlength{\LTpost}{0pt}
 
 \begin{longtable}{@{}p{0.085\linewidth}p{0.300\linewidth}p{0.070\linewidth}rrrrrr@{}}
 \caption{Task-level offline zero-shot evaluation results. The table reports Normalized ALL MSE, Normalized Joint MSE, and relative improvement for each of the 42 paired task-dataset records. Lower is better.}\label{tab:task-level}\\
